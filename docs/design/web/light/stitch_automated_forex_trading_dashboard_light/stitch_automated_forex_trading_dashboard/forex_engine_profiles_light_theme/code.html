@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "inverse-on-surface": "#ebf1ff",
+        "background": "#f8fafc",
+        "surface-container-lowest": "#ffffff",
+        "surface-container-low": "#ffffff",
+        "surface-container": "#f1f5f9",
+        "surface-container-high": "#e2e8f0",
+        "surface-container-highest": "#cbd5e1",
+        "outline": "#64748b",
+        "outline-variant": "#cbd5e1",
+        "primary": "#2563eb",
+        "primary-container": "#2563eb",
+        "on-primary": "#ffffff",
+        "on-primary-container": "#ffffff",
+        "secondary": "#0284c7",
+        "on-surface": "#0f172a",
+        "on-surface-variant": "#475569",
+        "error": "#dc2626",
+        "error-container": "#fee2e2",
+        "on-error-container": "#991b1b",
+        "tertiary": "#d97706",
+        "tertiary-container": "#fef3c7",
+        "on-tertiary-container": "#92400e"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "space-lg": "1.5rem",
+        "gutter-compact": "0.5rem",
+        "margin-mobile": "1rem",
+        "space-sm": "0.5rem",
+        "space-md": "1rem",
+        "gutter": "1rem",
+        "space-xl": "2rem",
+        "space-xs": "0.25rem",
+        "margin": "1.5rem"
+      },
+      "fontFamily": {
+        "display-lg": ["Inter"],
+        "body-md": ["Inter"],
+        "tabular-md": ["JetBrains Mono"],
+        "headline-lg": ["Inter"],
+        "tabular-lg": ["JetBrains Mono"],
+        "label-md": ["Inter"],
+        "tabular-sm": ["JetBrains Mono"],
+        "label-sm": ["Inter"],
+        "body-sm": ["Inter"],
+        "headline-sm": ["Inter"],
+        "body-lg": ["Inter"]
+      },
+      "fontSize": {
+        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+        "tabular-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+        "headline-lg": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+        "tabular-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+        "tabular-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+        "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+      }
+    }
+  }
+};</script></head><body class="bg-slate-50 font-body-md text-body-md text-slate-900 antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-slate-200 z-50 flex flex-col justify-between py-space-md"><div class="flex flex-col gap-space-lg"><div class="px-space-lg flex items-center gap-space-sm"><img alt="Forex Engine Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XWUydqMbLL7XqjB1dnTCSwCtH9jTtr1aFFSyvmzFu1EmlTQ02tuuziKeO9nRB8-Zl7nsUQVIjT2qnNjcnQfGW7lFp14EUD07baKYm1J779KCA9KSPk9lEnLE_5zf8IiyH0oFwXTJbQuXSEheBEKW8gzRjFOKOPVDOIyuwbpm0tv2ZdoQhf50Vf6FNtIithdhXMozSj0IJ2q8bVUstlHJp3gXfdfG7kKOhwFunW_-8pQ_AXQ_WUbYkLx2Y2"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-slate-900 tracking-tight leading-none">AuraFX</span><span class="font-label-sm text-label-sm text-slate-400 tracking-wider uppercase mt-space-xs font-semibold">Engine v4.2</span></div></div><nav class="flex flex-col gap-1 px-space-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-blue-600 text-white font-medium shadow-sm transition-colors" data-path="profiles" href="#"><span class="material-symbols-outlined text-[20px]">badge</span><span class="font-body-md text-body-md">Profiles</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="strategies" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span class="font-body-md text-body-md">Strategies</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="backtests" href="#"><span class="material-symbols-outlined text-[20px]">history</span><span class="font-body-md text-body-md">Backtests</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="forward-tests" href="#"><span class="material-symbols-outlined text-[20px]">timeline</span><span class="font-body-md text-body-md">Forward Tests</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="trades-and-journal" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-body-md text-body-md">Trades &amp; Journal</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="ai-assistant" href="#"><span class="material-symbols-outlined text-[20px]">smart_toy</span><span class="font-body-md text-body-md">AI Assistant</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="risk-and-settings" href="#"><span class="material-symbols-outlined text-[20px]">shield</span><span class="font-body-md text-body-md">Risk &amp; Settings</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="help" href="#"><span class="material-symbols-outlined text-[20px]">help</span><span class="font-body-md text-body-md">Help</span></a></nav></div><div class="px-space-md flex flex-col gap-space-xs"><div class="bg-slate-100 border border-slate-200 p-space-sm rounded-lg flex items-center justify-between"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-slate-500 uppercase">Latency</span><span class="font-tabular-sm text-tabular-sm text-slate-800 font-semibold">14.2 ms</span></div><div class="flex flex-col items-end"><span class="font-label-sm text-label-sm text-slate-500 uppercase">Slippage</span><span class="font-tabular-sm text-tabular-sm text-slate-800 font-semibold">0.02 pip</span></div></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-white/90 backdrop-blur-md border-b border-slate-200 z-40 px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-slate-900 tracking-tight font-semibold">Profiles</span><span class="font-body-sm text-body-sm text-slate-500">Strategy execution profiles, environments, and lifecycle tracking</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span><span class="font-tabular-sm text-tabular-sm text-slate-700 font-medium">Engine online</span><span class="font-label-sm text-label-sm text-slate-400">• 2s ago</span></div><button class="w-9 h-9 rounded-lg border border-slate-200 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors" id="theme-toggle-btn" title="Toggle dark mode" type="button"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><button class="px-space-md py-1.5 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-colors flex items-center gap-space-xs font-label-md text-label-md uppercase tracking-wider font-semibold shadow-sm" type="button"><span class="material-symbols-outlined text-body-md">emergency</span><span>Kill Switch</span></button><div class="relative flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDDmrn61MjJkTPH4SPQpG39G3hngLE-0c-S5am75zO69fwU1KWEWR9q8mtsJ08k7MiO7RTTTU0Y-P3cb-2QbyiDM4lGXfV2T5JIQiilCGXDI_r7wWUVoVT-AUMgT1PPeY_EgCxKe1M_HcnR8FZG4ZdooANMcAuGhaxDeRI2EMIQJXtsFFUrfueRMMiMXHV8H2CMWr30EVuKxtTBW8G6Ge0dnxWn_p7xyuK4Rs1i3kavaERUwd6WgKxFg"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full ring-2 ring-white"></span></div></div></header><main class="relative pt-16 bg-slate-50 min-h-screen w-full px-space-lg py-space-lg"><div class="flex flex-col w-full">
+<div class="flex flex-col gap-space-lg mb-space-lg">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm relative">
+<h1 class="font-display-lg text-display-lg text-slate-900 tracking-tight font-bold">Profiles</h1>
+<div class="relative inline-flex items-center">
+<button aria-label="Profile definition details" class="w-6 h-6 rounded-full bg-slate-200 hover:bg-slate-300 flex items-center justify-center text-slate-600 transition-colors cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[15px]">info</span>
+</button>
+<div class="absolute left-8 top-1/2 -translate-y-1/2 z-30 w-80 p-space-sm rounded-lg bg-slate-900 text-white shadow-xl border border-slate-700 flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-blue-400 text-[18px] shrink-0 mt-0.5">help</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-blue-400 font-semibold">Institutional Definition</span>
+<span class="font-body-sm text-body-sm text-slate-200 leading-tight mt-0.5">
+                  One strategy running on one instrument and timeframe.
+                </span>
+</div>
+<div class="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3 h-3 bg-slate-900 rotate-45 -z-10 border-l border-b border-slate-700"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+<p class="font-body-md text-body-md text-slate-600">
+            3 active environments, 1 halted. Total realized &amp; floating P&amp;L today: 
+            <span class="font-tabular-md text-tabular-md text-emerald-600 font-semibold">+$108.20 ▲</span> across running profiles. Nothing needs manual intervention.
+          </p>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-[11px] font-label-sm font-medium text-blue-700">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>2 Paper Trading
+            </span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-[11px] font-label-sm font-medium text-slate-700">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>1 Backtesting
+            </span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-[11px] font-label-sm font-semibold text-amber-700">
+<span class="material-symbols-outlined text-[13px]">warning</span>1 Risk Halted
+            </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-start lg:self-center shrink-0">
+<button class="px-space-md py-space-sm rounded-lg bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 transition-colors flex items-center gap-space-xs font-label-md text-label-md shadow-sm font-medium" type="button">
+<span class="material-symbols-outlined text-body-md text-slate-500">filter_list</span>
+<span>Filter Status</span>
+</button>
+<button class="px-space-md py-space-sm rounded-lg bg-blue-600 text-white font-medium text-label-md hover:bg-blue-700 transition-all shadow-sm flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>New Profile</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<div class="rounded-xl p-space-md bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-slate-500">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Active Profiles</span>
+<span class="material-symbols-outlined text-body-lg text-slate-400">tune</span>
+</div>
+<div class="mt-space-sm flex flex-col">
+<span class="font-tabular-lg text-tabular-lg text-slate-900 font-bold">4 Configured</span>
+<span class="font-body-sm text-body-sm text-slate-500 mt-0.5">3 Running / Ready · 1 Halted</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full mt-space-md overflow-hidden flex">
+<div class="bg-blue-600 h-full w-3/4"></div>
+<div class="bg-amber-500 h-full w-1/4"></div>
+</div>
+</div>
+<div class="rounded-xl p-space-md bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-slate-500">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Today's Combined P&amp;L</span>
+<span class="material-symbols-outlined text-emerald-600 text-body-lg">trending_up</span>
+</div>
+<div class="mt-space-sm flex flex-col">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-tabular-lg text-tabular-lg text-emerald-600 font-bold">+$108.20 ▲</span>
+<span class="font-tabular-sm text-tabular-sm text-emerald-600 font-semibold">+1.03%</span>
+</div>
+<span class="font-body-sm text-body-sm text-slate-500 mt-0.5">Realized + Open equity delta</span>
+</div>
+<div class="flex items-center justify-between text-label-sm text-slate-500 mt-space-md pt-2 border-t border-slate-100">
+<span>Net High Watermark</span>
+<span class="font-tabular-sm text-slate-900 font-semibold">$10,482.10</span>
+</div>
+</div>
+<div class="rounded-xl p-space-md bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-slate-500">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Live Capital Allocation</span>
+<span class="material-symbols-outlined text-blue-600 text-body-lg">verified_user</span>
+</div>
+<div class="mt-space-sm flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-tabular-lg text-tabular-lg text-slate-900 font-bold">$0.00</span>
+<span class="px-1.5 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 font-label-sm text-[10px] uppercase font-bold tracking-wider">Safe</span>
+</div>
+<span class="font-body-sm text-body-sm text-slate-500 mt-0.5">Paper &amp; Backtest Sandboxes Only</span>
+</div>
+<div class="flex items-center justify-between text-label-sm text-slate-500 mt-space-md pt-2 border-t border-slate-100">
+<span>Target Live Cap Pool</span>
+<span class="font-tabular-sm text-slate-900 font-semibold">$50,000.00</span>
+</div>
+</div>
+<div class="rounded-xl p-space-md bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-slate-500">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Risk Guardrail Status</span>
+<span class="material-symbols-outlined text-blue-600 text-body-lg">shield</span>
+</div>
+<div class="mt-space-sm flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-tabular-lg text-tabular-lg text-slate-900 font-bold">Normal</span>
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+</div>
+<span class="font-body-sm text-body-sm text-slate-500 mt-0.5">0.4% Max Drawdown Today</span>
+</div>
+<div class="flex items-center justify-between text-label-sm text-slate-500 mt-space-md pt-2 border-t border-slate-100">
+<span>Max Allowed DD Ceiling</span>
+<span class="font-tabular-sm text-red-600 font-semibold">2.00%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-space-lg">
+<div class="rounded-xl bg-white border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="p-space-lg flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h2 class="font-headline-lg text-headline-lg text-slate-900 font-bold">Gold Trend Follower</h2>
+<span class="px-2 py-0.5 rounded bg-blue-50 border border-blue-200 text-blue-700 font-label-sm text-[11px] font-semibold tracking-wide uppercase">PAPER</span>
+</div>
+<div class="flex items-center gap-space-sm mt-1">
+<span class="font-body-sm text-body-sm text-slate-500">EMA ATR Trend v1</span>
+<span class="text-slate-300">•</span>
+<div class="flex items-center gap-1">
+<span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-800 font-tabular-sm text-tabular-sm font-semibold">XAUUSD</span>
+<span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-600 font-tabular-sm text-tabular-sm">H1</span>
+</div>
+</div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-label-sm text-[11px] text-emerald-700 font-semibold shrink-0">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+            Running
+          </div>
+</div>
+<div class="bg-slate-50 border border-slate-200 p-space-md rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-slate-500 uppercase tracking-wider font-semibold">Lifecycle Validation</span>
+<span class="text-blue-600 font-semibold">Stage 3 of 5 · Paper Active (Day 6/14)</span>
+</div>
+<div class="grid grid-cols-5 gap-1.5 pt-1">
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-blue-600 w-full"></div>
+<span class="text-[10px] font-label-sm text-blue-600 font-medium truncate">1. Draft</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-blue-600 w-full"></div>
+<span class="text-[10px] font-label-sm text-blue-600 font-medium truncate">2. Backtested</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-blue-600 w-full animate-pulse"></div>
+<span class="text-[10px] font-label-sm text-blue-600 font-bold truncate">3. Paper</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-slate-200 w-full"></div>
+<span class="text-[10px] font-label-sm text-slate-400 truncate">4. Fwd-test</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-slate-200 w-full"></div>
+<span class="text-[10px] font-label-sm text-slate-400 truncate">5. Live-ready</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-space-sm pt-space-xs">
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Today's P&amp;L</span>
+<span class="font-tabular-lg text-tabular-lg text-emerald-600 font-bold mt-0.5">+$126.40 ▲</span>
+<span class="font-tabular-sm text-tabular-sm text-emerald-600 font-semibold">+1.22% delta</span>
+</div>
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Win Rate (Paper)</span>
+<span class="font-tabular-lg text-tabular-lg text-slate-900 font-bold mt-0.5">68.4%</span>
+<span class="font-body-sm text-body-sm text-slate-500">19 trades filled</span>
+</div>
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Max DD / Sharpe</span>
+<span class="font-tabular-lg text-tabular-lg text-slate-900 font-bold mt-0.5">0.62%</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-600 font-medium">Sharpe 2.84</span>
+</div>
+</div>
+</div>
+<div class="px-space-lg py-space-md bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-slate-600 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">check_circle</span>
+<span>Spread &amp; slippage filters fully nominal</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-label-md text-label-md transition-colors flex items-center gap-1 font-medium shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-slate-500">pause</span>
+<span>Pause</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-label-md text-label-md transition-all flex items-center gap-1 font-medium shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Inspect / Edit</span>
+</button>
+</div>
+</div>
+</div>
+<div class="rounded-xl bg-white border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="p-space-lg flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h2 class="font-headline-lg text-headline-lg text-slate-900 font-bold">Euro Breakout</h2>
+<span class="px-2 py-0.5 rounded bg-blue-50 border border-blue-200 text-blue-700 font-label-sm text-[11px] font-semibold tracking-wide uppercase">PAPER</span>
+</div>
+<div class="flex items-center gap-space-sm mt-1">
+<span class="font-body-sm text-body-sm text-slate-500">London Open Volatility v2.1</span>
+<span class="text-slate-300">•</span>
+<div class="flex items-center gap-1">
+<span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-800 font-tabular-sm text-tabular-sm font-semibold">EURUSD</span>
+<span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-600 font-tabular-sm text-tabular-sm">M15</span>
+</div>
+</div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-label-sm text-[11px] text-emerald-700 font-semibold shrink-0">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+            Running
+          </div>
+</div>
+<div class="bg-slate-50 border border-slate-200 p-space-md rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-slate-500 uppercase tracking-wider font-semibold">Lifecycle Validation</span>
+<span class="text-blue-600 font-semibold">Stage 3 of 5 · Testing range bounds</span>
+</div>
+<div class="grid grid-cols-5 gap-1.5 pt-1">
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-blue-600 w-full"></div>
+<span class="text-[10px] font-label-sm text-blue-600 font-medium truncate">1. Draft</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-blue-600 w-full"></div>
+<span class="text-[10px] font-label-sm text-blue-600 font-medium truncate">2. Backtested</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-blue-600 w-full animate-pulse"></div>
+<span class="text-[10px] font-label-sm text-blue-600 font-bold truncate">3. Paper</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-slate-200 w-full"></div>
+<span class="text-[10px] font-label-sm text-slate-400 truncate">4. Fwd-test</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-slate-200 w-full"></div>
+<span class="text-[10px] font-label-sm text-slate-400 truncate">5. Live-ready</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-space-sm pt-space-xs">
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Today's P&amp;L</span>
+<span class="font-tabular-lg text-tabular-lg text-red-600 font-bold mt-0.5">-$18.20 ▼</span>
+<span class="font-tabular-sm text-tabular-sm text-red-600 font-semibold">-0.17% delta</span>
+</div>
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Win Rate (Paper)</span>
+<span class="font-tabular-lg text-tabular-lg text-slate-900 font-bold mt-0.5">54.2%</span>
+<span class="font-body-sm text-body-sm text-slate-500">24 trades filled</span>
+</div>
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Max DD / Sharpe</span>
+<span class="font-tabular-lg text-tabular-lg text-slate-900 font-bold mt-0.5">1.10%</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-600 font-medium">Sharpe 1.95</span>
+</div>
+</div>
+</div>
+<div class="px-space-lg py-space-md bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-slate-600 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-blue-600">schedule</span>
+<span>Next entry bracket: Frankfurt Pre-Session 06:45 GMT</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-label-md text-label-md transition-colors flex items-center gap-1 font-medium shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-slate-500">pause</span>
+<span>Pause</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-label-md text-label-md transition-all flex items-center gap-1 font-medium shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Inspect / Edit</span>
+</button>
+</div>
+</div>
+</div>
+<div class="rounded-xl bg-white border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="p-space-lg flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h2 class="font-headline-lg text-headline-lg text-slate-900 font-bold">Yen Pullback</h2>
+<span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-700 font-label-sm text-[11px] font-semibold tracking-wide uppercase">BACKTEST</span>
+</div>
+<div class="flex items-center gap-space-sm mt-1">
+<span class="font-body-sm text-body-sm text-slate-500">RSI Mean Reversion v3</span>
+<span class="text-slate-300">•</span>
+<div class="flex items-center gap-1">
+<span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-800 font-tabular-sm text-tabular-sm font-semibold">USDJPY</span>
+<span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-600 font-tabular-sm text-tabular-sm">H1</span>
+</div>
+</div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-label-sm text-[11px] text-slate-700 font-semibold shrink-0">
+<span class="inline-flex rounded-full h-2 w-2 bg-slate-400"></span>
+            Ready / Paused
+          </div>
+</div>
+<div class="bg-slate-50 border border-slate-200 p-space-md rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-slate-500 uppercase tracking-wider font-semibold">Lifecycle Validation</span>
+<span class="text-slate-700 font-semibold">Stage 2 of 5 · Backtested (99.4% Tick Quality)</span>
+</div>
+<div class="grid grid-cols-5 gap-1.5 pt-1">
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-slate-500 w-full"></div>
+<span class="text-[10px] font-label-sm text-slate-700 font-medium truncate">1. Draft</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-slate-500 w-full"></div>
+<span class="text-[10px] font-label-sm text-slate-700 font-bold truncate">2. Backtested</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-slate-200 w-full"></div>
+<span class="text-[10px] font-label-sm text-slate-400 truncate">3. Paper</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-slate-200 w-full"></div>
+<span class="text-[10px] font-label-sm text-slate-400 truncate">4. Fwd-test</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-slate-200 w-full"></div>
+<span class="text-[10px] font-label-sm text-slate-400 truncate">5. Live-ready</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-space-sm pt-space-xs">
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Today's P&amp;L</span>
+<span class="font-tabular-lg text-tabular-lg text-slate-500 font-bold mt-0.5">$0.00 —</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-400 font-medium">0.00% delta</span>
+</div>
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Historical Win</span>
+<span class="font-tabular-lg text-tabular-lg text-slate-900 font-bold mt-0.5">71.2%</span>
+<span class="font-body-sm text-body-sm text-slate-500">340 tick simulations</span>
+</div>
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Sharpe Ratio</span>
+<span class="font-tabular-lg text-tabular-lg text-slate-900 font-bold mt-0.5">2.41</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-600 font-medium">Profit Factor 1.88</span>
+</div>
+</div>
+</div>
+<div class="px-space-lg py-space-md bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-slate-600 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-slate-500">analytics</span>
+<span>Monte Carlo stress passed · Ready for stage 3 paper trial</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-label-md text-label-md transition-colors flex items-center gap-1 font-medium shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+<span>Run Paper Test</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-label-md text-label-md transition-colors flex items-center gap-1 font-medium shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-slate-500">tune</span>
+<span>Inspect</span>
+</button>
+</div>
+</div>
+</div>
+<div class="rounded-xl bg-white border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="p-space-lg flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h2 class="font-headline-lg text-headline-lg text-slate-900 font-bold">Cable Momentum Scalper</h2>
+<span class="px-2 py-0.5 rounded bg-blue-50 border border-blue-200 text-blue-700 font-label-sm text-[11px] font-semibold tracking-wide uppercase">PAPER</span>
+</div>
+<div class="flex items-center gap-space-sm mt-1">
+<span class="font-body-sm text-body-sm text-slate-500">London Breakout Scalp v2</span>
+<span class="text-slate-300">•</span>
+<div class="flex items-center gap-1">
+<span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-800 font-tabular-sm text-tabular-sm font-semibold">GBPUSD</span>
+<span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-600 font-tabular-sm text-tabular-sm">M5</span>
+</div>
+</div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-label-sm text-[11px] text-amber-700 font-semibold shrink-0">
+<span class="material-symbols-outlined text-[14px]">gpp_maybe</span>
+            Halted: Daily Spread Filter Exceeded
+          </div>
+</div>
+<div class="bg-slate-50 border border-slate-200 p-space-md rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-slate-500 uppercase tracking-wider font-semibold">Lifecycle Validation</span>
+<span class="text-amber-700 font-semibold">Stage 3 of 5 · Halted at Paper Gate</span>
+</div>
+<div class="grid grid-cols-5 gap-1.5 pt-1">
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-blue-600 w-full"></div>
+<span class="text-[10px] font-label-sm text-blue-600 font-medium truncate">1. Draft</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-blue-600 w-full"></div>
+<span class="text-[10px] font-label-sm text-blue-600 font-medium truncate">2. Backtested</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-amber-500 w-full"></div>
+<span class="text-[10px] font-label-sm text-amber-700 font-bold truncate">3. Halted</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-slate-200 w-full"></div>
+<span class="text-[10px] font-label-sm text-slate-400 truncate">4. Fwd-test</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="h-1.5 rounded-full bg-slate-200 w-full"></div>
+<span class="text-[10px] font-label-sm text-slate-400 truncate">5. Live-ready</span>
+</div>
+</div>
+</div>
+<div class="rounded-lg p-space-sm bg-amber-50 border border-amber-200 flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-amber-600 text-body-md shrink-0 mt-0.5">report_problem</span>
+<p class="font-body-sm text-body-sm text-amber-800 leading-snug font-medium">
+            Execution halted by Risk Engine: Spread widened beyond 2.5 pips during news embargo.
+          </p>
+</div>
+<div class="grid grid-cols-3 gap-space-sm">
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Today's P&amp;L</span>
+<span class="font-tabular-lg text-tabular-lg text-slate-500 font-bold mt-0.5">$0.00 —</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-400 font-medium">0.00% delta</span>
+</div>
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Prior Session WR</span>
+<span class="font-tabular-lg text-tabular-lg text-slate-900 font-bold mt-0.5">61.5%</span>
+<span class="font-body-sm text-body-sm text-slate-500">13 trades</span>
+</div>
+<div class="bg-slate-50 border border-slate-200 rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Spread Spike</span>
+<span class="font-tabular-lg text-tabular-lg text-amber-600 font-bold mt-0.5">3.4 pips</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-400 font-medium">Threshold: 2.5</span>
+</div>
+</div>
+</div>
+<div class="px-space-lg py-space-md bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-amber-800 font-body-sm text-body-sm font-medium">
+<span class="material-symbols-outlined text-[16px] text-amber-600">lock_reset</span>
+<span>Requires manual authorization to restart engine</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-1.5 rounded-lg bg-amber-500 text-white font-label-md text-label-md hover:bg-amber-600 transition-colors flex items-center gap-1 font-semibold shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">build_circle</span>
+<span>Review &amp; Reset</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-label-md text-label-md transition-colors flex items-center gap-1 font-medium shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-slate-500">tune</span>
+<span>Config</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

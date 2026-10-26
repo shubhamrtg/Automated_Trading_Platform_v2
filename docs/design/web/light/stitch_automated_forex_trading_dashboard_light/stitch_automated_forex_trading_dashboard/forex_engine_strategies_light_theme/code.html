@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Forex Engine - Strategies (Light Theme)</title><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
+  theme: {
+    extend: {
+      "colors": {
+        "on-primary-fixed": "#00174b",
+        "surface-container": "#f1f5f9",
+        "on-error": "#ffffff",
+        "surface-container-low": "#f8fafc",
+        "primary-fixed-dim": "#b4c5ff",
+        "on-secondary": "#ffffff",
+        "background": "#f8fafc",
+        "error-container": "#fee2e2",
+        "secondary-container": "#dcfce7",
+        "on-surface-variant": "#64748b",
+        "on-surface": "#0f172a",
+        "surface-container-lowest": "#ffffff",
+        "inverse-primary": "#b4c5ff",
+        "surface": "#ffffff",
+        "secondary-fixed-dim": "#62df7d",
+        "surface-tint": "#2563eb",
+        "on-primary": "#ffffff",
+        "on-tertiary-fixed-variant": "#93000b",
+        "on-secondary-fixed-variant": "#005320",
+        "inverse-on-surface": "#ebf1ff",
+        "on-primary-container": "#ffffff",
+        "surface-bright": "#ffffff",
+        "on-secondary-fixed": "#002109",
+        "surface-variant": "#e2e8f0",
+        "on-error-container": "#991b1b",
+        "on-primary-fixed-variant": "#003ea8",
+        "tertiary-fixed": "#ffdad6",
+        "error": "#dc2626",
+        "surface-container-highest": "#e2e8f0",
+        "outline-variant": "#e2e8f0",
+        "on-tertiary": "#ffffff",
+        "secondary": "#16a34a",
+        "primary-container": "#2563eb",
+        "tertiary-fixed-dim": "#ffb4ab",
+        "on-tertiary-container": "#9a3412",
+        "on-background": "#0f172a",
+        "tertiary": "#d97706",
+        "on-secondary-container": "#15803d",
+        "primary": "#2563eb",
+        "surface-dim": "#e2e8f0",
+        "inverse-surface": "#1e293b",
+        "surface-container-high": "#f1f5f9",
+        "primary-fixed": "#dbe1ff",
+        "secondary-fixed": "#7ffc97",
+        "outline": "#94a3b8",
+        "tertiary-container": "#fef3c7",
+        "on-tertiary-fixed": "#410002"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "space-xl": "1.5rem",
+        "margin": "1rem",
+        "space-lg": "1rem",
+        "space-sm": "0.5rem",
+        "gutter-dense": "0.5rem",
+        "gutter": "1rem",
+        "space-md": "0.75rem",
+        "space-xs": "0.25rem"
+      },
+      "fontFamily": {
+        "label-sm": ["Inter"],
+        "data-sm": ["JetBrains Mono"],
+        "data-md": ["JetBrains Mono"],
+        "body-md": ["Inter"],
+        "body-sm": ["Inter"],
+        "caption": ["Inter"],
+        "data-lg": ["JetBrains Mono"],
+        "headline-sm": ["Inter"],
+        "display": ["Inter"],
+        "headline-md": ["Inter"],
+        "body-lg": ["Inter"],
+        "label-md": ["Inter"],
+        "headline-lg": ["Inter"],
+        "tabular-sm": ["JetBrains Mono"],
+        "tabular-md": ["JetBrains Mono"],
+        "tabular-lg": ["JetBrains Mono"],
+        "display-lg": ["Inter"]
+      },
+      "fontSize": {
+        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+        "data-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0em", "fontWeight": "400" }],
+        "data-md": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+        "body-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+        "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "400" }],
+        "caption": ["10px", { "lineHeight": "12px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+        "data-lg": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+        "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+        "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+        "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }],
+        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+        "tabular-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+        "tabular-md": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+        "tabular-lg": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+      }
+    }
+  }
+};</script></head><body class="bg-[#f8fafc] font-body-md text-body-md text-slate-800 antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-slate-200 z-50 flex flex-col justify-between py-space-md shadow-sm"><div class="flex flex-col gap-space-lg"><div class="px-space-lg flex items-center gap-space-sm"><img alt="Forex Engine Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XWUydqMbLL7XqjB1dnTCSwCtH9jTtr1aFFSyvmzFu1EmlTQ02tuuziKeO9nRB8-Zl7nsUQVIjT2qnNjcnQfGW7lFp14EUD07baKYm1J779KCA9KSPk9lEnLE_5zf8IiyH0oFwXTJbQuXSEheBEKW8gzRjFOKOPVDOIyuwbpm0tv2ZdoQhf50Vf6FNtIithdhXMozSj0IJ2q8bVUstlHJp3gXfdfG7kKOhwFunW_-8pQ_AXQ_WUbYkLx2Y2"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-slate-900 tracking-tight leading-none">AuraFX</span><span class="font-label-sm text-label-sm text-slate-400 tracking-wider uppercase mt-space-xs font-semibold">Engine v4.2</span></div></div><nav class="flex flex-col gap-space-xs px-space-sm" data-active-classes="bg-blue-600 text-white font-headline-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-body-lg">grid_view</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="profiles" href="#"><span class="material-symbols-outlined text-body-lg">badge</span><span class="font-body-md text-body-md">Profiles</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-blue-600 text-white shadow-sm transition-colors" data-path="strategies" href="#"><span class="material-symbols-outlined text-body-lg">tune</span><span class="font-body-md text-body-md font-medium">Strategies</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="backtests" href="#"><span class="material-symbols-outlined text-body-lg">history</span><span class="font-body-md text-body-md">Backtests</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="forward-tests" href="#"><span class="material-symbols-outlined text-body-lg">timeline</span><span class="font-body-md text-body-md">Forward Tests</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="trades-and-journal" href="#"><span class="material-symbols-outlined text-body-lg">receipt_long</span><span class="font-body-md text-body-md">Trades &amp; Journal</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="ai-assistant" href="#"><span class="material-symbols-outlined text-body-lg">smart_toy</span><span class="font-body-md text-body-md">AI Assistant</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="risk-and-settings" href="#"><span class="material-symbols-outlined text-body-lg">shield</span><span class="font-body-md text-body-md">Risk &amp; Settings</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="help" href="#"><span class="material-symbols-outlined text-body-lg">help</span><span class="font-body-md text-body-md">Help</span></a></nav></div><div class="px-space-md flex flex-col gap-space-xs"><div class="bg-slate-50 border border-slate-200 p-space-sm rounded-lg flex items-center justify-between"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-slate-400 uppercase font-semibold">Latency</span><span class="font-tabular-sm text-tabular-sm text-slate-900 font-medium">14.2 ms</span></div><div class="flex flex-col items-end"><span class="font-label-sm text-label-sm text-slate-400 uppercase font-semibold">Slippage</span><span class="font-tabular-sm text-tabular-sm text-slate-900 font-medium">0.02 pip</span></div></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-white/90 backdrop-blur-xl border-b border-slate-200 z-40 px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-slate-900 tracking-tight">Strategies</span><span class="font-body-sm text-body-sm text-slate-500">Quantitative strategy definitions, parameter rulesets, and AI-assisted version control</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-slate-100 border border-slate-200"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span></span><span class="font-tabular-sm text-tabular-sm text-slate-800 font-medium">Engine online</span><span class="font-label-sm text-label-sm text-slate-400">• 2s ago</span></div><button class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition-colors" id="theme-toggle-btn" title="Switch to dark theme" type="button"><span class="material-symbols-outlined text-body-lg">dark_mode</span></button><button class="px-space-md py-space-xs rounded-lg bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-600 hover:text-white transition-colors flex items-center gap-space-xs font-label-md text-label-md uppercase tracking-wider font-semibold" type="button"><span class="material-symbols-outlined text-body-md">emergency</span><span>Kill Switch</span></button><div class="relative flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDDmrn61MjJkTPH4SPQpG39G3hngLE-0c-S5am75zO69fwU1KWEWR9q8mtsJ08k7MiO7RTTTU0Y-P3cb-2QbyiDM4lGXfV2T5JIQiilCGXDI_r7wWUVoVT-AUMgT1PPeY_EgCxKe1M_HcnR8FZG4ZdooANMcAuGhaxDeRI2EMIQJXtsFFUrfueRMMiMXHV8H2CMWr30EVuKxtTBW8G6Ge0dnxWn_p7xyuK4Rs1i3kavaERUwd6WgKxFg"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full ring-2 ring-white"></span></div></div></header><main class="relative pt-16 bg-[#f8fafc] min-h-screen w-full px-space-lg py-space-lg"><div class="flex flex-col w-full gap-space-lg">
+<!-- Section 1: Page Header & Action Controls -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md mt-2">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-slate-900 tracking-tight font-bold">Strategies</h1>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-blue-50 text-blue-700 border border-blue-200 font-semibold tracking-wide">Quant Repo v4.2</span>
+</div>
+<p class="font-body-md text-body-md text-slate-500">Quantitative strategy definitions, parameter rulesets, and AI-assisted version control</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-space-xs rounded-lg bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 transition-colors flex items-center gap-space-xs font-label-md text-label-md shadow-sm font-medium" type="button">
+<span class="material-symbols-outlined text-body-md text-slate-500">file_upload</span>
+<span>Import Ruleset</span>
+</button>
+<button class="px-space-md py-space-xs rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-all flex items-center gap-space-xs font-label-md text-label-md shadow-sm font-medium" type="button">
+<span class="material-symbols-outlined text-body-md">add</span>
+<span>+ New Strategy</span>
+</button>
+</div>
+</div>
+<!-- Section 2: At A Glance Live Operational Banner -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between p-space-md bg-white border border-slate-200 rounded-xl gap-space-md shadow-sm">
+<div class="flex items-start md:items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 text-blue-600">
+<span class="material-symbols-outlined text-body-lg">hub</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-slate-900 font-semibold uppercase tracking-wider">At a glance</span>
+<span class="font-label-sm text-label-sm text-slate-400">• Repository Telemetry</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-600">
+          3 core strategy families configured across 6 versions. 1 strategy actively deployed in live paper execution. Strategy <span class="text-slate-900 font-tabular-sm font-semibold">EMA ATR Trend v2</span> is an unvalidated AI draft ready for backtesting.
+        </p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-wrap shrink-0">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-md bg-emerald-50 border border-emerald-200 text-label-sm font-label-sm text-emerald-700 font-semibold">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span>1 Active in Engine</span>
+</span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-md bg-amber-50 border border-amber-200 text-label-sm font-label-sm text-amber-700 font-semibold">
+<span class="material-symbols-outlined text-body-sm text-amber-600">bolt</span>
+<span>2 Drafts Pending</span>
+</span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-md bg-blue-50 border border-blue-200 text-label-sm font-label-sm text-blue-700 font-semibold">
+<span class="material-symbols-outlined text-body-sm text-blue-600">auto_awesome</span>
+<span>AI Generator Synced</span>
+</span>
+</div>
+</div>
+<!-- Section 3: 4 Institutional KPI Summary Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1 -->
+<div class="bg-white border border-slate-200 p-space-md rounded-xl flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase tracking-wider font-semibold">Active Strategies</span>
+<button class="text-slate-400 hover:text-slate-700 transition-colors" title="Count of currently armed bots in execution" type="button">
+<span class="material-symbols-outlined text-body-md">info</span>
+</button>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-xs">
+<span class="font-tabular-lg text-display-lg text-slate-900 font-bold tracking-tight">1 Running</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500 truncate">Currently assigned to running profile 'Gold Trend Follower'.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-white border border-slate-200 p-space-md rounded-xl flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase tracking-wider font-semibold">Backtested Performance (v1)</span>
+<button class="text-slate-400 hover:text-slate-700 transition-colors" title="5-Year Historical Performance audited" type="button">
+<span class="material-symbols-outlined text-body-md">info</span>
+</button>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-xs">
+<span class="font-tabular-lg text-display-lg text-emerald-600 font-bold tracking-tight">+$1,482.50</span>
+<span class="font-tabular-sm text-tabular-sm text-emerald-700 font-semibold bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">▲ +14.6%</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500 truncate">5-year simulated net gain with 2.84 profit factor.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-white border border-slate-200 p-space-md rounded-xl flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase tracking-wider font-semibold">Draft Expectancy (v2 AI)</span>
+<button class="text-slate-400 hover:text-slate-700 transition-colors" title="Predicted mathematical expectancy via historical distribution model" type="button">
+<span class="material-symbols-outlined text-body-md">info</span>
+</button>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-xs">
+<span class="font-tabular-lg text-display-lg text-emerald-600 font-bold tracking-tight">+18.2%</span>
+<span class="font-tabular-sm text-tabular-sm text-emerald-700 font-semibold bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">▲ Est.</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500 truncate">AI model projected return based on tighter ATR trailing.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-white border border-slate-200 p-space-md rounded-xl flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase tracking-wider font-semibold">Active Risk Cap</span>
+<button class="text-slate-400 hover:text-slate-700 transition-colors" title="Engine hard safety circuit threshold" type="button">
+<span class="material-symbols-outlined text-body-md">info</span>
+</button>
+</div>
+<div class="my-space-sm flex items-baseline gap-space-xs">
+<span class="font-tabular-lg text-display-lg text-slate-900 font-bold tracking-tight">0.50%</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-500 font-medium">/ Trade</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500 truncate">Automated hard lot size ceiling per execution.</p>
+</div>
+</div>
+<!-- Section 4: Main Content Split Workflow (Left Panel 340px vs Right Panel 2/3) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-start">
+<!-- LEFT PANEL: Strategy Repository & Version Tree (lg:col-span-4) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col gap-space-md shadow-sm">
+<!-- Repo Header & Filter -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-slate-900 font-bold">Repository</span>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-medium border border-slate-200">3 Families</span>
+</div>
+<button class="text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-100 transition-colors" type="button">
+<span class="material-symbols-outlined text-body-md">filter_list</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-body-md text-slate-400">search</span>
+<input class="w-full bg-slate-50 border border-slate-200 text-slate-800 placeholder:text-slate-400 text-body-sm font-body-sm pl-9 pr-3 py-2 rounded-lg outline-none focus:bg-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors" placeholder="Filter strategy or symbol..." type="text" value="EMA ATR"/>
+</div>
+<!-- Group 1: EMA ATR Trend -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-space-xs py-1">
+<span class="font-label-sm text-label-sm text-slate-800 font-bold uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-body-sm text-blue-600">folder_open</span>
+              EMA ATR Trend
+            </span>
+<span class="font-tabular-sm text-tabular-sm text-slate-400 font-medium">2 Versions</span>
+</div>
+<!-- Version 1: EMA ATR Trend v1 -->
+<div class="p-space-sm bg-slate-50 border border-slate-200 rounded-lg hover:bg-slate-100/80 transition-colors cursor-pointer flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-md font-semibold text-slate-900">EMA ATR Trend v1</span>
+<div class="flex items-center gap-1">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-label-sm font-label-sm bg-emerald-50 border border-emerald-200 text-emerald-700 font-medium">Active</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-label-sm font-label-sm bg-slate-200 text-slate-600 font-mono font-medium">#FX-88029</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">XAUUSD H1 · Assigned to Gold Trend Follower</p>
+<div class="flex items-center gap-space-md pt-1">
+<span class="font-tabular-sm text-tabular-sm text-slate-800 font-medium">Win 68.4%</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-800 font-medium">Sharpe 2.84</span>
+<span class="font-tabular-sm text-tabular-sm text-rose-600 font-semibold">Max DD -1.10% ▼</span>
+</div>
+</div>
+<!-- Version 2: EMA ATR Trend v2 (Active Selected Item) -->
+<div class="p-space-sm bg-blue-50/50 border border-blue-200 rounded-lg cursor-pointer flex flex-col gap-space-xs relative">
+<div class="absolute -left-[1px] top-3 bottom-3 w-1 bg-blue-600 rounded-r"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-body-md font-bold text-slate-900">EMA ATR Trend v2</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-label-sm font-label-sm bg-blue-100 text-blue-700 font-medium">
+<span class="material-symbols-outlined text-[13px]">auto_awesome</span>
+                  AI Created
+                </span>
+</div>
+<div class="flex items-center gap-1">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-label-sm font-label-sm bg-amber-100 text-amber-800 font-medium">Draft</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-label-sm font-label-sm bg-slate-200 text-slate-600 font-medium">Unverified</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-slate-600">XAUUSD H1 · Generated by Aura AI Assistant 2h ago</p>
+<div class="p-2 rounded bg-white border border-blue-100 text-label-sm font-body-sm text-slate-600 flex items-start gap-1.5 shadow-xs">
+<span class="material-symbols-outlined text-body-md text-amber-600 shrink-0">psychology</span>
+<span>Optimized for reduced drawdown during New York open session.</span>
+</div>
+</div>
+</div>
+<!-- Group 2: London Breakout Scalp -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between px-space-xs py-1">
+<span class="font-label-sm text-label-sm text-slate-400 font-semibold uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-body-sm text-slate-400">folder</span>
+              London Breakout Scalp
+            </span>
+<span class="font-tabular-sm text-tabular-sm text-slate-400 font-medium">1 Version</span>
+</div>
+<div class="p-space-sm bg-slate-50/70 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-md font-medium text-slate-800">London Breakout v2.1</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-label-sm font-label-sm bg-emerald-50 border border-emerald-200 text-emerald-700 font-medium">Active</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">EURUSD M15 · Win Rate 54.2% · Sharpe 1.95</p>
+</div>
+</div>
+<!-- Group 3: RSI Bollinger Bounce -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between px-space-xs py-1">
+<span class="font-label-sm text-label-sm text-slate-400 font-semibold uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-body-sm text-slate-400">folder</span>
+              RSI Bollinger Bounce
+            </span>
+<span class="font-tabular-sm text-tabular-sm text-slate-400 font-medium">1 Version</span>
+</div>
+<div class="p-space-sm bg-slate-50/70 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-md font-medium text-slate-800">RSI Bollinger v3.0</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-label-sm font-label-sm bg-amber-100 text-amber-800 font-medium">Draft</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">USDJPY H1 · Pending backtest review</p>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT PANEL: Parameter Editor & "What Changed" Comparison (lg:col-span-8) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Right Panel Header with Action Toolbar and Persistent Open Tooltip -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined text-headline-sm">tune</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-slate-900 font-bold">EMA ATR Trend v2</h2>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-amber-100 text-amber-800 font-medium">Draft</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-blue-100 text-blue-700 font-medium">
+<span class="material-symbols-outlined text-[13px]">auto_awesome</span>
+                AI Generated
+              </span>
+</div>
+<span class="font-body-sm text-body-sm text-slate-500">Asset Class: Metals &amp; Spot Forex (XAUUSD) · H1 Resolution Engine</span>
+</div>
+</div>
+<!-- Action Toolbar with Open Tooltip -->
+<div class="flex items-center gap-space-sm relative">
+<button class="px-space-md py-space-xs rounded-lg bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 transition-colors flex items-center gap-space-xs font-label-md text-label-md shadow-sm font-medium" type="button">
+<span class="material-symbols-outlined text-body-md text-blue-600">play_arrow</span>
+<span>Run Backtest (5Y Tick Data)</span>
+</button>
+<!-- Button Container hosting Open Tooltip -->
+<div class="relative inline-block">
+<button class="px-space-md py-space-xs rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold transition-all flex items-center gap-space-xs font-label-md text-label-md shadow-sm" id="activate-trigger-btn" type="button">
+<span class="material-symbols-outlined text-body-md">offline_bolt</span>
+<span>Activate Strategy</span>
+</button>
+<!-- Prominent Open Institutional Tooltip -->
+<div class="absolute right-0 top-full mt-2 z-30 w-72 p-space-sm bg-white border border-slate-200 rounded-lg shadow-xl flex flex-col gap-1 pointer-events-auto">
+<!-- Upward Caret Pointer -->
+<div class="absolute -top-1.5 right-6 w-3 h-3 bg-white border-t border-l border-slate-200 rotate-45"></div>
+<div class="flex items-center gap-1.5 text-amber-700 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-body-sm">warning</span>
+<span class="font-bold uppercase tracking-wider">Activation Safeguard</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-600 leading-snug">
+                Activation requires confirmation: This will queue a migration for running profile <span class="font-tabular-sm text-blue-600 font-semibold">#FX-88029</span> and require an automated 14-day paper forward test before live execution.
+              </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Parameter Editor Form Cards (3 Structured Sections) -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col gap-space-lg shadow-sm">
+<!-- Section 1: Entry Rules -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs border-b border-slate-100">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-body-lg font-bold text-slate-900">1. Entry Rules</span>
+<span class="font-body-sm text-body-sm text-slate-500">— How the bot decides to open a trade</span>
+</div>
+<span class="font-label-sm text-label-sm text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded font-semibold">3 Parameters</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Fast EMA -->
+<div class="flex flex-col gap-space-xs bg-slate-50 border border-slate-200 p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<label class="font-label-md text-label-md text-slate-800 font-semibold">Fast EMA Period</label>
+<button class="text-slate-400 hover:text-slate-700" title="Period length for the primary trigger exponential average" type="button">
+<span class="material-symbols-outlined text-body-sm">info</span>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-blue-700 font-tabular-sm bg-blue-50 border border-blue-200 px-1 rounded font-semibold">Adjusted</span>
+</div>
+<div class="relative">
+<input class="w-full bg-white border border-slate-300 text-slate-900 font-tabular-md text-tabular-md px-3 py-2 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-semibold" type="text" value="20"/>
+<span class="absolute right-3 top-2.5 font-label-sm text-label-sm text-slate-400 font-medium">Bars</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500">Range: 5 – 50 · Default: 20 · Exponential Moving Average fast line</span>
+</div>
+<!-- Slow EMA -->
+<div class="flex flex-col gap-space-xs bg-slate-50 border border-slate-200 p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<label class="font-label-md text-label-md text-slate-800 font-semibold">Slow EMA Period</label>
+<button class="text-slate-400 hover:text-slate-700" title="Baseline trend filter period" type="button">
+<span class="material-symbols-outlined text-body-sm">info</span>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-blue-700 font-tabular-sm bg-blue-50 border border-blue-200 px-1 rounded font-semibold">Adjusted</span>
+</div>
+<div class="relative">
+<input class="w-full bg-white border border-slate-300 text-slate-900 font-tabular-md text-tabular-md px-3 py-2 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-semibold" type="text" value="50"/>
+<span class="absolute right-3 top-2.5 font-label-sm text-label-sm text-slate-400 font-medium">Bars</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500">Range: 20 – 100 · Default: 50 · Trend baseline confirmation</span>
+</div>
+<!-- Trend Filter EMA -->
+<div class="flex flex-col gap-space-xs bg-slate-50 border border-slate-200 p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<label class="font-label-md text-label-md text-slate-800 font-semibold">Trend EMA Period</label>
+<button class="text-slate-400 hover:text-slate-700" title="Macro regime gate: long when price is above EMA200" type="button">
+<span class="material-symbols-outlined text-body-sm">info</span>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-emerald-700 font-tabular-sm bg-emerald-50 border border-emerald-200 px-1 rounded font-semibold">New</span>
+</div>
+<div class="relative">
+<input class="w-full bg-white border border-slate-300 text-slate-900 font-tabular-md text-tabular-md px-3 py-2 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-semibold" type="text" value="200"/>
+<span class="absolute right-3 top-2.5 font-label-sm text-label-sm text-slate-400 font-medium">Bars</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500">Range: 100 – 300 · Default: 200 · Long-term macro regime filter (Price &gt; EMA200 for Longs)</span>
+</div>
+</div>
+</div>
+<!-- Section 2: Exit Rules -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs border-b border-slate-100">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-body-lg font-bold text-slate-900">2. Exit Rules</span>
+<span class="font-body-sm text-body-sm text-slate-500">— How the bot closes trades and locks profits</span>
+</div>
+<span class="font-label-sm text-label-sm text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded font-semibold">3 Parameters</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- ATR Period -->
+<div class="flex flex-col gap-space-xs bg-slate-50 border border-slate-200 p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<label class="font-label-md text-label-md text-slate-800 font-semibold">ATR Period</label>
+<button class="text-slate-400 hover:text-slate-700" title="Average True Range smoothing period for dynamic volatility bands" type="button">
+<span class="material-symbols-outlined text-body-sm">info</span>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500 font-tabular-sm bg-slate-200/70 px-1 rounded font-medium">Unchanged</span>
+</div>
+<div class="relative">
+<input class="w-full bg-white border border-slate-300 text-slate-900 font-tabular-md text-tabular-md px-3 py-2 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-semibold" type="text" value="14"/>
+<span class="absolute right-3 top-2.5 font-label-sm text-label-sm text-slate-400 font-medium">Bars</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500">Range: 7 – 28 · Default: 14 · Average True Range volatility measure</span>
+</div>
+<!-- Stop Loss Multiplier -->
+<div class="flex flex-col gap-space-xs bg-slate-50 border border-slate-200 p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<label class="font-label-md text-label-md text-slate-800 font-semibold">Stop Loss (SL)</label>
+<button class="text-slate-400 hover:text-slate-700" title="Trailing and initial stop loss calculation multiple" type="button">
+<span class="material-symbols-outlined text-body-sm">info</span>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-emerald-700 font-tabular-sm bg-emerald-50 border border-emerald-200 px-1 rounded font-semibold">-0.5x Tighter</span>
+</div>
+<div class="relative">
+<input class="w-full bg-white border border-slate-300 text-slate-900 font-tabular-md text-tabular-md px-3 py-2 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-semibold" type="text" value="2.0x ATR"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-body-md text-slate-400">shield</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500">Range: 1.0x – 4.0x · Default: 2.0x ATR · Dynamic volatility stop (v1 was 2.5x)</span>
+</div>
+<!-- Take Profit Multiplier -->
+<div class="flex flex-col gap-space-xs bg-slate-50 border border-slate-200 p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<label class="font-label-md text-label-md text-slate-800 font-semibold">Take Profit (TP)</label>
+<button class="text-slate-400 hover:text-slate-700" title="Target exit price multiple of ATR" type="button">
+<span class="material-symbols-outlined text-body-sm">info</span>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-blue-700 font-tabular-sm bg-blue-50 border border-blue-200 px-1 rounded font-semibold">Faster Target</span>
+</div>
+<div class="relative">
+<input class="w-full bg-white border border-slate-300 text-slate-900 font-tabular-md text-tabular-md px-3 py-2 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-semibold" type="text" value="3.0x ATR"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-body-md text-slate-400">flag</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500">Range: 1.5x – 6.0x · Default: 3.0x ATR · Reward-to-risk ratio 1.50R</span>
+</div>
+</div>
+</div>
+<!-- Section 3: Risk & Position Sizing -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs border-b border-slate-100">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-body-lg font-bold text-slate-900">3. Risk &amp; Position Sizing</span>
+<span class="font-body-sm text-body-sm text-slate-500">— Hard safety limits and account equity allocations</span>
+</div>
+<span class="font-label-sm text-label-sm text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded font-semibold">3 Limits</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Risk Per Trade -->
+<div class="flex flex-col gap-space-xs bg-slate-50 border border-slate-200 p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<label class="font-label-md text-label-md text-slate-800 font-semibold">Risk Per Trade (% Equity)</label>
+<button class="text-slate-400 hover:text-slate-700" title="Calculates position volume so SL touch equals this fraction of equity" type="button">
+<span class="material-symbols-outlined text-body-sm">info</span>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500 font-tabular-sm bg-slate-200/70 px-1 rounded font-medium">Locked</span>
+</div>
+<div class="relative">
+<input class="w-full bg-white border border-slate-300 text-slate-900 font-tabular-md text-tabular-md px-3 py-2 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-semibold" type="text" value="0.5%"/>
+<span class="absolute right-3 top-2.5 font-label-sm text-label-sm text-slate-400 font-medium">Equity</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500">Range: 0.1% – 2.0% · Default: 0.5% · Computed dynamically from SL distance</span>
+</div>
+<!-- Max Open Lots -->
+<div class="flex flex-col gap-space-xs bg-slate-50 border border-slate-200 p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<label class="font-label-md text-label-md text-slate-800 font-semibold">Max Lot Size Cap</label>
+<button class="text-slate-400 hover:text-slate-700" title="Broker execution order boundary cap" type="button">
+<span class="material-symbols-outlined text-body-sm">info</span>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500 font-tabular-sm bg-slate-200/70 px-1 rounded font-medium">Safety</span>
+</div>
+<div class="relative">
+<input class="w-full bg-white border border-slate-300 text-slate-900 font-tabular-md text-tabular-md px-3 py-2 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-semibold" type="text" value="0.50 Lots"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-body-md text-slate-400">gavel</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500">Range: 0.01 – 2.00 Lots · Hard execution cap</span>
+</div>
+<!-- Max Spread Tolerance -->
+<div class="flex flex-col gap-space-xs bg-slate-50 border border-slate-200 p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<label class="font-label-md text-label-md text-slate-800 font-semibold">Max Spread Tolerance</label>
+<button class="text-slate-400 hover:text-slate-700" title="Execution filter prevents entries during high slippage spread widenings" type="button">
+<span class="material-symbols-outlined text-body-sm">info</span>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500 font-tabular-sm bg-slate-200/70 px-1 rounded font-medium">Filter</span>
+</div>
+<div class="relative">
+<input class="w-full bg-white border border-slate-300 text-slate-900 font-tabular-md text-tabular-md px-3 py-2 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-semibold" type="text" value="1.8 pips"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-body-md text-slate-400">tune</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500">Order rejected if broker spread exceeds this threshold</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 5: Side-by-Side "What Changed" Comparison Diff & Confirmation Modal -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col gap-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-body-lg text-blue-600">difference</span>
+<h3 class="font-headline-sm text-headline-sm text-slate-900 font-bold tracking-tight">Version Diff: EMA ATR Trend v1 (Active) ➔ v2 (Draft, AI)</h3>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500 font-tabular-sm bg-slate-100 border border-slate-200 px-2 py-0.5 rounded font-medium">7 Rules Inspected</span>
+</div>
+<!-- Diff Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 border-y border-slate-200 text-label-sm font-label-sm text-slate-500 uppercase tracking-wider font-semibold">
+<th class="py-2.5 px-3 rounded-l-lg">Rule / Metric Parameter</th>
+<th class="py-2.5 px-3">Active (v1)</th>
+<th class="py-2.5 px-3">Draft AI (v2)</th>
+<th class="py-2.5 px-3 rounded-r-lg text-right">Variance Impact</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 font-body-sm">
+<!-- Row 1: Fast EMA -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-2.5 px-3 font-semibold text-slate-800">Fast EMA Period</td>
+<td class="py-2.5 px-3 font-tabular-sm text-slate-500 font-medium">12</td>
+<td class="py-2.5 px-3 font-tabular-sm text-blue-600 font-bold">20</td>
+<td class="py-2.5 px-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-blue-50 border border-blue-200 text-blue-700 font-semibold">Adjusted</span>
+</td>
+</tr>
+<!-- Row 2: Slow EMA -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-2.5 px-3 font-semibold text-slate-800">Slow EMA Period</td>
+<td class="py-2.5 px-3 font-tabular-sm text-slate-500 font-medium">26</td>
+<td class="py-2.5 px-3 font-tabular-sm text-blue-600 font-bold">50</td>
+<td class="py-2.5 px-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-blue-50 border border-blue-200 text-blue-700 font-semibold">Adjusted</span>
+</td>
+</tr>
+<!-- Row 3: Trend Filter EMA -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-2.5 px-3 font-semibold text-slate-800">Trend Filter EMA</td>
+<td class="py-2.5 px-3 font-tabular-sm text-slate-400 font-medium">None</td>
+<td class="py-2.5 px-3 font-tabular-sm text-emerald-600 font-bold">200 EMA</td>
+<td class="py-2.5 px-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-emerald-50 border border-emerald-200 text-emerald-700 font-semibold">New Filter Added ▲</span>
+</td>
+</tr>
+<!-- Row 4: Stop Loss -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-2.5 px-3 font-semibold text-slate-800">Stop Loss (Dynamic ATR)</td>
+<td class="py-2.5 px-3 font-tabular-sm text-slate-500 font-medium">2.5x ATR</td>
+<td class="py-2.5 px-3 font-tabular-sm text-emerald-600 font-bold">2.0x ATR</td>
+<td class="py-2.5 px-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-emerald-50 border border-emerald-200 text-emerald-700 font-semibold">Tighter Risk (-0.5x)</span>
+</td>
+</tr>
+<!-- Row 5: Take Profit -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-2.5 px-3 font-semibold text-slate-800">Take Profit (Dynamic ATR)</td>
+<td class="py-2.5 px-3 font-tabular-sm text-slate-500 font-medium">3.5x ATR</td>
+<td class="py-2.5 px-3 font-tabular-sm text-blue-600 font-bold">3.0x ATR</td>
+<td class="py-2.5 px-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-slate-100 border border-slate-200 text-slate-700 font-medium">Faster Target</span>
+</td>
+</tr>
+<!-- Row 6: Risk Per Trade -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-2.5 px-3 font-semibold text-slate-800">Risk Per Trade</td>
+<td class="py-2.5 px-3 font-tabular-sm text-slate-600 font-medium">0.50%</td>
+<td class="py-2.5 px-3 font-tabular-sm text-slate-600 font-medium">0.50%</td>
+<td class="py-2.5 px-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-slate-100 text-slate-400 font-medium">Identical / 0.00%</span>
+</td>
+</tr>
+<!-- Row 7: Projected Expectancy -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-2.5 px-3 font-semibold text-slate-800">Projected Expectancy (R:R)</td>
+<td class="py-2.5 px-3 font-tabular-sm text-slate-600 font-medium">1.42 R:R</td>
+<td class="py-2.5 px-3 font-tabular-sm text-emerald-600 font-bold">1.50 R:R</td>
+<td class="py-2.5 px-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-emerald-50 border border-emerald-200 text-emerald-700 font-tabular-sm font-bold">+5.6% ▲</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Warning Callout Banner -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-amber-50 border border-amber-200 text-amber-800">
+<span class="material-symbols-outlined text-body-lg text-amber-600 shrink-0">warning</span>
+<span class="font-body-sm text-body-sm text-slate-700">
+<strong class="text-amber-800 font-bold">Notice:</strong> 'EMA ATR Trend v1' is currently running live on Gold Trend Follower. Activating v2 will replace the execution logic upon next flat market state.
+          </span>
+</div>
+<!-- Bottom Activation Workflow Bar with Confirmation Dialog Surface -->
+<div class="p-space-md rounded-xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="font-headline-sm text-body-md font-bold text-slate-900 flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse"></span>
+              Draft Ready for Deployment
+            </span>
+<span class="font-body-sm text-body-sm text-slate-500">Review diff parameters above or trigger automated historical stress test.</span>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="px-space-md py-space-xs rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-medium transition-colors font-label-md text-label-md shadow-sm" type="button">
+              Run Backtest (5Y Historical)
+            </button>
+<button class="px-space-md py-space-xs rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold transition-all font-label-md text-label-md shadow-sm" id="open-confirm-modal" type="button">
+              Activate v2 Strategy
+            </button>
+</div>
+</div>
+<!-- Inline Visual Confirmation State Card / Popup (Institutional Confirmation View) -->
+<div class="p-space-md rounded-xl bg-white border-2 border-emerald-500/30 shadow-lg flex flex-col md:flex-row items-center justify-between gap-space-md" id="activation-confirmation-card">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 text-emerald-600">
+<span class="material-symbols-outlined text-headline-sm">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-body-md font-bold text-slate-900">Confirm Strategy Activation</span>
+<p class="font-body-sm text-body-sm text-slate-600 max-w-xl">
+                Are you sure you want to promote <strong class="text-slate-900 font-semibold">EMA ATR Trend v2 (Draft, AI)</strong> to Active? This will safely update running profile <span class="font-tabular-sm text-blue-600 font-bold">#FX-88029</span> when all currently open trades reach a flat state.
+              </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="px-space-md py-space-xs rounded-lg bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200 transition-colors font-label-md text-label-md font-medium" type="button">
+              Cancel
+            </button>
+<button class="px-space-md py-space-xs rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold transition-all font-label-md text-label-md shadow-md flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-body-md">lock_reset</span>
+<span>Confirm &amp; Activate</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Micro-interactions for activation trigger
+    const confirmBtn = document.getElementById('open-confirm-modal');
+    const confirmCard = document.getElementById('activation-confirmation-card');
+    if (confirmBtn && confirmCard) {
+      confirmBtn.addEventListener('click', () => {
+        confirmCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
+  </script>
+</div></main></div></body></html>

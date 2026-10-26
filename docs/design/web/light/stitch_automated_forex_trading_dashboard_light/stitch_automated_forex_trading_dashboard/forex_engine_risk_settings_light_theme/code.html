@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Forex Engine - Risk &amp; Settings (Light Theme)</title><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
+  theme: {
+    extend: {
+      "colors": {
+        "on-primary-fixed": "#00174b",
+        "surface-container": "#f1f5f9",
+        "on-error": "#ffffff",
+        "surface-container-low": "#f8fafc",
+        "primary-fixed-dim": "#b4c5ff",
+        "on-secondary": "#ffffff",
+        "background": "#f8fafc",
+        "error-container": "#fee2e2",
+        "secondary-container": "#dcfce7",
+        "on-surface-variant": "#64748b",
+        "on-surface": "#0f172a",
+        "surface-container-lowest": "#ffffff",
+        "inverse-primary": "#b4c5ff",
+        "surface": "#ffffff",
+        "secondary-fixed-dim": "#62df7d",
+        "surface-tint": "#2563eb",
+        "on-primary": "#ffffff",
+        "on-tertiary-fixed-variant": "#93000b",
+        "on-secondary-fixed-variant": "#005320",
+        "inverse-on-surface": "#ebf1ff",
+        "on-primary-container": "#ffffff",
+        "surface-bright": "#ffffff",
+        "on-secondary-fixed": "#002109",
+        "surface-variant": "#e2e8f0",
+        "on-error-container": "#991b1b",
+        "on-primary-fixed-variant": "#003ea8",
+        "tertiary-fixed": "#ffdad6",
+        "error": "#dc2626",
+        "surface-container-highest": "#e2e8f0",
+        "outline-variant": "#e2e8f0",
+        "on-tertiary": "#ffffff",
+        "secondary": "#16a34a",
+        "primary-container": "#2563eb",
+        "tertiary-fixed-dim": "#ffb4ab",
+        "on-tertiary-container": "#9a3412",
+        "on-background": "#0f172a",
+        "tertiary": "#d97706",
+        "on-secondary-container": "#15803d",
+        "primary": "#2563eb",
+        "surface-dim": "#e2e8f0",
+        "inverse-surface": "#1e293b",
+        "surface-container-high": "#f1f5f9",
+        "primary-fixed": "#dbe1ff",
+        "secondary-fixed": "#7ffc97",
+        "outline": "#94a3b8",
+        "tertiary-container": "#fef3c7",
+        "on-tertiary-fixed": "#410002"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "space-xl": "1.5rem",
+        "margin": "1rem",
+        "space-lg": "1rem",
+        "space-sm": "0.5rem",
+        "gutter-dense": "0.5rem",
+        "gutter": "1rem",
+        "space-md": "0.75rem",
+        "space-xs": "0.25rem"
+      },
+      "fontFamily": {
+        "label-sm": ["Inter"],
+        "data-sm": ["JetBrains Mono"],
+        "data-md": ["JetBrains Mono"],
+        "body-md": ["Inter"],
+        "body-sm": ["Inter"],
+        "caption": ["Inter"],
+        "data-lg": ["JetBrains Mono"],
+        "headline-sm": ["Inter"],
+        "display": ["Inter"],
+        "headline-md": ["Inter"],
+        "body-lg": ["Inter"],
+        "label-md": ["Inter"],
+        "headline-lg": ["Inter"],
+        "tabular-sm": ["JetBrains Mono"],
+        "tabular-md": ["JetBrains Mono"],
+        "tabular-lg": ["JetBrains Mono"],
+        "display-lg": ["Inter"]
+      },
+      "fontSize": {
+        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+        "data-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0em", "fontWeight": "400" }],
+        "data-md": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+        "body-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+        "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "400" }],
+        "caption": ["10px", { "lineHeight": "12px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+        "data-lg": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+        "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+        "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+        "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }],
+        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+        "tabular-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+        "tabular-md": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+        "tabular-lg": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+      }
+    }
+  }
+};</script></head><body class="bg-[#f8fafc] font-body-md text-body-md text-slate-800 antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-slate-200 z-50 flex flex-col justify-between py-space-md shadow-sm"><div class="flex flex-col gap-space-lg"><div class="px-space-lg flex items-center gap-space-sm"><img alt="Forex Engine Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XWUydqMbLL7XqjB1dnTCSwCtH9jTtr1aFFSyvmzFu1EmlTQ02tuuziKeO9nRB8-Zl7nsUQVIjT2qnNjcnQfGW7lFp14EUD07baKYm1J779KCA9KSPk9lEnLE_5zf8IiyH0oFwXTJbQuXSEheBEKW8gzRjFOKOPVDOIyuwbpm0tv2ZdoQhf50Vf6FNtIithdhXMozSj0IJ2q8bVUstlHJp3gXfdfG7kKOhwFunW_-8pQ_AXQ_WUbYkLx2Y2"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-slate-900 tracking-tight leading-none font-bold">AuraFX</span><span class="font-label-sm text-label-sm text-slate-400 tracking-wider uppercase mt-space-xs font-semibold">Engine v4.2</span></div></div><nav class="flex flex-col gap-space-xs px-space-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-body-lg">grid_view</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="profiles" href="#"><span class="material-symbols-outlined text-body-lg">badge</span><span class="font-body-md text-body-md">Profiles</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="strategies" href="#"><span class="material-symbols-outlined text-body-lg">tune</span><span class="font-body-md text-body-md">Strategies</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="backtests" href="#"><span class="material-symbols-outlined text-body-lg">history</span><span class="font-body-md text-body-md">Backtests</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="forward-tests" href="#"><span class="material-symbols-outlined text-body-lg">timeline</span><span class="font-body-md text-body-md">Forward Tests</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="trades-and-journal" href="#"><span class="material-symbols-outlined text-body-lg">receipt_long</span><span class="font-body-md text-body-md">Trades &amp; Journal</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="ai-assistant" href="#"><span class="material-symbols-outlined text-body-lg">smart_toy</span><span class="font-body-md text-body-md">AI Assistant</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-blue-50 text-blue-600 border border-blue-200/60 shadow-xs transition-colors" data-path="risk-and-settings" href="#"><span class="material-symbols-outlined text-body-lg text-blue-600">shield</span><span class="font-body-md text-body-md font-semibold">Risk &amp; Settings</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="help" href="#"><span class="material-symbols-outlined text-body-lg">help</span><span class="font-body-md text-body-md">Help</span></a></nav></div><div class="px-space-md flex flex-col gap-space-xs"><div class="bg-slate-50 border border-slate-200 p-space-sm rounded-lg flex items-center justify-between"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-slate-400 uppercase font-semibold">Latency</span><span class="font-tabular-sm text-tabular-sm text-slate-900 font-medium">14.2 ms</span></div><div class="flex flex-col items-end"><span class="font-label-sm text-label-sm text-slate-400 uppercase font-semibold">Slippage</span><span class="font-tabular-sm text-tabular-sm text-slate-900 font-medium">0.02 pip</span></div></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-white/90 backdrop-blur-xl border-b border-slate-200 z-40 px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-slate-900 tracking-tight font-semibold">Risk &amp; Settings / Global Guardrails &amp; System Configuration</span><span class="font-body-sm text-body-sm text-slate-500">Automated circuit breakers, slippage bounds, and execution locks</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-slate-100 border border-slate-200"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span></span><span class="font-tabular-sm text-tabular-sm text-slate-800 font-medium">Engine online</span><span class="font-label-sm text-label-sm text-slate-400">• 2s ago</span></div><button class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition-colors" id="theme-toggle-btn" title="Switch to dark theme" type="button"><svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button><button class="px-space-md py-space-xs rounded-lg bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-600 hover:text-white transition-colors flex items-center gap-space-xs font-label-md text-label-md uppercase tracking-wider font-semibold" type="button"><span class="material-symbols-outlined text-body-md">emergency</span><span>Kill Switch</span></button><div class="relative flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDDmrn61MjJkTPH4SPQpG39G3hngLE-0c-S5am75zO69fwU1KWEWR9q8mtsJ08k7MiO7RTTTU0Y-P3cb-2QbyiDM4lGXfV2T5JIQiilCGXDI_r7wWUVoVT-AUMgT1PPeY_EgCxKe1M_HcnR8FZG4ZdooANMcAuGhaxDeRI2EMIQJXtsFFUrfueRMMiMXHV8H2CMWr30EVuKxtTBW8G6Ge0dnxWn_p7xyuK4Rs1i3kavaERUwd6WgKxFg"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full ring-2 ring-white"></span></div></div></header><main class="relative pt-16 bg-[#f8fafc] min-h-screen w-full px-space-lg py-space-lg"><div class="flex flex-col w-full gap-space-lg">
+<!-- TOP HEADER & CONTROLS -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md mt-2">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-slate-900 tracking-tight font-bold">Risk &amp; Settings</h1>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-blue-50 text-blue-700 border border-blue-200 font-semibold tracking-wide uppercase">CORE GUARDRAILS V4.2</span>
+</div>
+<p class="font-body-md text-body-md text-slate-500">Account-level hard risk limits, safety circuit breakers, active sessions, and live execution authorization.</p>
+</div>
+<!-- Quick Actions -->
+<div class="flex items-center gap-space-sm self-start xl:self-auto">
+<button class="px-space-md py-space-xs rounded-lg bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 transition-colors flex items-center gap-space-xs font-label-md text-label-md shadow-sm font-medium" type="button">
+<span class="material-symbols-outlined text-body-lg text-slate-500">description</span>
+<span>Export Audit Log</span>
+</button>
+<button class="px-space-md py-space-xs rounded-lg bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 transition-colors flex items-center gap-space-xs font-label-md text-label-md shadow-sm font-medium" type="button">
+<span class="material-symbols-outlined text-body-lg text-slate-500">restart_alt</span>
+<span>Reset Default Guardrails</span>
+</button>
+</div>
+</div>
+<!-- AT A GLANCE BANNER -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-start md:items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 text-blue-600">
+<span class="material-symbols-outlined text-headline-sm">verified_user</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-blue-700 font-semibold uppercase tracking-wider">At a glance</span>
+</div>
+<p class="font-body-md text-body-md text-slate-700">All 5 primary safety circuit breakers are <span class="text-slate-900 font-semibold">ACTIVE</span> with 0 hard breaches in the last 90 days. Global daily loss buffer is currently at <span class="font-tabular-md text-tabular-md text-blue-600 font-semibold">80% remaining capacity</span>.</p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-wrap">
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-md bg-emerald-50 border border-emerald-200 text-label-sm font-label-sm text-emerald-700 font-semibold">
+<span class="h-2 w-2 rounded-full bg-emerald-600 inline-block"></span>
+<span>Global Guardrails Enforced</span>
+</div>
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-md bg-amber-50 border border-amber-200 text-label-sm font-label-sm text-amber-700 font-semibold">
+<span class="material-symbols-outlined text-body-sm text-amber-600">lock</span>
+<span>Strict Drawdown Ceiling Armed</span>
+</div>
+</div>
+</div>
+<!-- TOP 4 METRIC CARDS -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Metric 1: Max Daily Drawdown Buffer (HOST OF VISIBLE TOOLTIP) -->
+<div class="relative bg-white border border-slate-200 rounded-xl p-space-md flex flex-col justify-between shadow-sm min-h-[140px]">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase tracking-wider font-semibold flex items-center gap-1">
+          Max Daily Drawdown Buffer
+          <button class="text-slate-400 hover:text-slate-700 transition-colors cursor-pointer" title="Info" type="button">
+<span class="material-symbols-outlined text-body-sm leading-none">info</span>
+</button>
+</span>
+<span class="px-1.5 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 font-tabular-sm text-tabular-sm font-semibold">Safe Buffer: 80%</span>
+</div>
+<div class="my-space-xs">
+<span class="font-tabular-lg text-headline-lg font-bold text-blue-600 tracking-tight">Safe: 1.60%</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">0.40% current intraday loss vs 2.00% daily circuit trip</p>
+<!-- OPEN FLOATING TOOLTIP BOX -->
+<div class="absolute -bottom-24 left-4 right-4 z-30 p-space-sm bg-white border border-slate-200 rounded-lg shadow-xl text-slate-700 text-body-sm flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-blue-600 text-body-md mt-0.5 shrink-0">shield</span>
+<div>
+<span class="font-label-sm text-label-sm text-blue-700 uppercase font-semibold block mb-0.5">Daily Loss Circuit</span>
+<p class="font-body-sm text-body-sm text-slate-600 leading-tight">If total realized plus floating losses reach 2.00% of start-of-day equity, the engine instantly closes all open positions and suspends trading until 00:00 UTC.</p>
+</div>
+</div>
+</div>
+<!-- Metric 2: Portfolio Equity at Risk -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col justify-between shadow-sm min-h-[140px]">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase tracking-wider font-semibold flex items-center gap-1">
+          Portfolio Equity at Risk
+          <span class="material-symbols-outlined text-body-sm text-slate-400">info</span>
+</span>
+<span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-700 font-tabular-sm text-tabular-sm font-medium">1 Lot Alloc</span>
+</div>
+<div class="my-space-xs">
+<span class="font-tabular-lg text-headline-lg font-bold text-slate-900 tracking-tight">0.50%</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">1 active position totaling 0.50 lots committed</p>
+</div>
+<!-- Metric 3: Max Historic Drawdown -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col justify-between shadow-sm min-h-[140px]">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase tracking-wider font-semibold flex items-center gap-1">
+          Max Historic Drawdown
+          <span class="material-symbols-outlined text-body-sm text-slate-400">info</span>
+</span>
+<span class="px-1.5 py-0.5 rounded bg-rose-50 border border-rose-200 text-rose-700 font-tabular-sm text-tabular-sm font-semibold">Cap: 10.00%</span>
+</div>
+<div class="my-space-xs">
+<span class="font-tabular-lg text-headline-lg font-bold text-rose-600 tracking-tight">-3.40% ▼</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">Well within the 10.00% lifetime account stop threshold</p>
+</div>
+<!-- Metric 4: Active Safety Enforcers -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col justify-between shadow-sm min-h-[140px]">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase tracking-wider font-semibold flex items-center gap-1">
+          Active Safety Enforcers
+          <span class="material-symbols-outlined text-body-sm text-slate-400">info</span>
+</span>
+<span class="px-1.5 py-0.5 rounded bg-blue-50 border border-blue-200 text-blue-700 font-tabular-sm text-tabular-sm font-semibold">All Armed</span>
+</div>
+<div class="my-space-xs">
+<span class="font-tabular-lg text-headline-lg font-bold text-slate-900 tracking-tight">6 / 6 Active</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">News blackout, spread filter, slippage ceiling, and auth gates armed</p>
+</div>
+</div>
+<!-- SECTION 1: RISK LIMITS & HARD CEILINGS -->
+<div class="flex flex-col gap-space-sm pt-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-headline-sm text-blue-600">speed</span>
+<h2 class="font-headline-sm text-headline-sm text-slate-900 font-bold">Risk Limits &amp; Hard Ceilings</h2>
+<span class="material-symbols-outlined text-body-sm text-slate-400" title="Hard execution boundaries">info</span>
+</div>
+<p class="font-body-md text-body-md text-slate-500">Automatic limits that the engine cannot exceed under any market condition.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-space-md mt-space-xs">
+<!-- Card: Risk Per Trade -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Risk Per Trade</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-500">Cap: 0.50%</span>
+</div>
+<div class="font-tabular-lg text-tabular-lg font-bold text-slate-900">0.50% / Trade</div>
+<!-- Usage Meter -->
+<div class="w-full bg-slate-100 rounded-full h-1.5 mt-space-xs overflow-hidden">
+<div class="bg-blue-600 h-full rounded-full" style="width: 100%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-blue-600 font-medium mt-1">100% single order allocation</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 mt-space-md">Computed dynamically from ATR stop distance.</p>
+</div>
+<!-- Card: Max Daily Loss -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Max Daily Loss</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-500">2.00% Daily Cap</span>
+</div>
+<div class="font-tabular-lg text-tabular-lg font-bold text-slate-900">0.40%</div>
+<!-- Usage Meter -->
+<div class="w-full bg-slate-100 rounded-full h-1.5 mt-space-xs overflow-hidden">
+<div class="bg-blue-600 h-full rounded-full" style="width: 20%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500 mt-1">20% capacity utilized</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 mt-space-md">1.60% buffer remaining before auto-halt.</p>
+</div>
+<!-- Card: Max Lifetime Drawdown -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Lifetime Drawdown</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-500">-10.00% Hard Stop</span>
+</div>
+<div class="font-tabular-lg text-tabular-lg font-bold text-rose-600">-3.40% ▼</div>
+<!-- Usage Meter -->
+<div class="w-full bg-slate-100 rounded-full h-1.5 mt-space-xs overflow-hidden">
+<div class="bg-rose-500 h-full rounded-full" style="width: 34%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-rose-600 font-medium mt-1">34% of stop ceiling utilized</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 mt-space-md">Hard margin stop resets only with manual administrative review.</p>
+</div>
+<!-- Card: Max Concurrent Open Positions -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Open Positions</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-500">Max: 2 slots</span>
+</div>
+<div class="font-tabular-lg text-tabular-lg font-bold text-slate-900">2 / 2 Positions</div>
+<!-- Usage Meter -->
+<div class="w-full bg-slate-100 rounded-full h-1.5 mt-space-xs overflow-hidden">
+<div class="bg-amber-500 h-full rounded-full" style="width: 100%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-amber-700 font-medium mt-1">1 XAUUSD Long, 1 EURUSD Short</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 mt-space-md">New signals are queued in observation mode.</p>
+</div>
+<!-- Card: Max Spread Tolerance Filter -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-500 uppercase font-semibold">Spread Filter</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-500">Max: 1.8 pips</span>
+</div>
+<div class="font-tabular-lg text-tabular-lg font-bold text-slate-900">1.8 pips</div>
+<!-- Usage Meter -->
+<div class="w-full bg-slate-100 rounded-full h-1.5 mt-space-xs overflow-hidden">
+<div class="bg-blue-600 h-full rounded-full" style="width: 66%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-500 mt-1">Current avg: 1.2 pips</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 mt-space-md">Orders auto-rejected if broker spread exceeds 1.8 pips during rollover or high volatility.</p>
+</div>
+</div>
+</div>
+<!-- SECTION 2: KILL SWITCH & HALT HISTORY -->
+<div class="flex flex-col gap-space-sm pt-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-headline-sm text-rose-600">emergency_home</span>
+<h2 class="font-headline-sm text-headline-sm text-slate-900 font-bold">Kill Switch &amp; Halt History</h2>
+<span class="material-symbols-outlined text-body-sm text-slate-400">info</span>
+</div>
+<p class="font-body-md text-body-md text-slate-500">Emergency circuit breaker log and automated safety intervention records.</p>
+<!-- Master Kill Switch Banner -->
+<div class="bg-rose-50/60 border border-rose-200 rounded-xl p-space-md flex flex-col lg:flex-row lg:items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-rose-100 border border-rose-200 flex items-center justify-center text-rose-600 shrink-0">
+<span class="material-symbols-outlined text-headline-sm">warning</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-rose-700 font-bold tracking-tight">Master Emergency Kill Switch</span>
+<p class="font-body-md text-body-md text-slate-700 mt-0.5">Instantly liquidates all 2 active positions at best available market price and disconnects MT5/Fix API gateway.</p>
+</div>
+</div>
+<button class="px-space-lg py-space-sm rounded-lg bg-rose-600 text-white hover:bg-rose-700 font-label-md text-label-md uppercase tracking-wider font-semibold transition-colors shrink-0 flex items-center justify-center gap-space-xs shadow-sm" type="button">
+<span class="material-symbols-outlined text-body-md">power_settings_new</span>
+<span>Trigger Emergency Stop</span>
+</button>
+</div>
+<!-- Blotter Table -->
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+<div class="px-space-md py-space-sm bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+<span class="font-label-md text-label-md text-slate-900 font-semibold uppercase tracking-wider">Halt &amp; Trigger Audit Log</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-400">Showing last 3 interventions</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-slate-50/70 border-b border-slate-200 text-slate-500 font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-space-sm px-space-md">Date &amp; Time</th>
+<th class="py-space-sm px-space-md">Event</th>
+<th class="py-space-sm px-space-md">Engine Action Taken</th>
+<th class="py-space-sm px-space-md text-right">Protection Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-slate-800">
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-space-sm px-space-md font-tabular-sm text-tabular-sm text-slate-500">May 04, 2024 · 12:30 UTC</td>
+<td class="py-space-sm px-space-md font-semibold text-slate-900">High-Impact Spread Spike (US NFP)</td>
+<td class="py-space-sm px-space-md text-slate-600">New order entry blocked for 15 mins</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="px-2 py-0.5 rounded bg-blue-50 border border-blue-200 text-blue-700 font-tabular-sm text-tabular-sm font-medium">Automated Protection · Resolved</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-space-sm px-space-md font-tabular-sm text-tabular-sm text-slate-500">Apr 18, 2024 · 19:14 UTC</td>
+<td class="py-space-sm px-space-md font-semibold text-slate-900">Broker Disconnect (Simulated Gateway)</td>
+<td class="py-space-sm px-space-md text-slate-600">Positions maintained, SL verified on exchange</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-700 font-tabular-sm text-tabular-sm font-medium">Safeguard Triggered · Resolved</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-space-sm px-space-md font-tabular-sm text-tabular-sm text-slate-500">Mar 12, 2024 · 08:00 UTC</td>
+<td class="py-space-sm px-space-md font-semibold text-slate-900">Daily drawdown test run</td>
+<td class="py-space-sm px-space-md text-slate-600">Simulated breach test</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 font-tabular-sm text-tabular-sm font-medium">Manual Drill · Passed</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- SECTION 3: NEWS BLACKOUT CALENDAR -->
+<div class="flex flex-col gap-space-sm pt-space-md">
+<div class="flex items-center justify-between flex-wrap gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-headline-sm text-blue-600">calendar_month</span>
+<h2 class="font-headline-sm text-headline-sm text-slate-900 font-bold">News Blackout Calendar</h2>
+<span class="material-symbols-outlined text-body-sm text-slate-400">info</span>
+</div>
+<p class="font-body-md text-body-md text-slate-500">Automatic execution pause around high-volatility Tier 1 macroeconomic announcements.</p>
+</div>
+<!-- Settings Toggle -->
+<div class="flex items-center gap-space-sm bg-white border border-slate-200 px-space-md py-space-xs rounded-xl shadow-sm">
+<span class="font-label-md text-label-md text-slate-700 font-medium">Enforce Pre/Post News Trading Embargo (15 min buffer)</span>
+<button aria-checked="true" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full bg-blue-600 p-0.5 transition-colors duration-200 ease-in-out focus:outline-none" role="switch" type="button">
+<span class="translate-x-4 inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</div>
+<!-- Blackout Schedule Cards/Table -->
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-slate-50/70 border-b border-slate-200 text-slate-500 font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-space-sm px-space-md">Scheduled Time</th>
+<th class="py-space-sm px-space-md">Macro Event</th>
+<th class="py-space-sm px-space-md">Asset / Currency</th>
+<th class="py-space-sm px-space-md">Volatility Impact</th>
+<th class="py-space-sm px-space-md text-right">Engine Blackout Guard</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-slate-800">
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-space-sm px-space-md font-tabular-sm text-tabular-sm text-blue-600 font-semibold">Today 14:30 UTC</td>
+<td class="py-space-sm px-space-md font-semibold text-slate-900">US Core CPI (MoM / YoY)</td>
+<td class="py-space-sm px-space-md font-tabular-sm text-tabular-sm text-slate-600">USD / XAU</td>
+<td class="py-space-sm px-space-md">
+<span class="px-2 py-0.5 rounded bg-rose-50 border border-rose-200 text-rose-700 font-label-sm text-label-sm font-semibold">High (Red Flag)</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="px-2 py-0.5 rounded bg-amber-50 border border-amber-200 text-amber-700 font-tabular-sm text-tabular-sm font-medium">Active Blackout Armed (14:15 - 14:45 UTC)</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-space-sm px-space-md font-tabular-sm text-tabular-sm text-slate-500">Tomorrow 18:00 UTC</td>
+<td class="py-space-sm px-space-md font-semibold text-slate-900">FOMC Interest Rate Decision</td>
+<td class="py-space-sm px-space-md font-tabular-sm text-tabular-sm text-slate-600">USD / Global</td>
+<td class="py-space-sm px-space-md">
+<span class="px-2 py-0.5 rounded bg-rose-100 border border-rose-300 text-rose-800 font-label-sm text-label-sm font-semibold uppercase tracking-wider">Critical</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-700 font-tabular-sm text-tabular-sm font-medium">Scheduled Trading Suspension</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-space-sm px-space-md font-tabular-sm text-tabular-sm text-slate-500">May 16, 09:30 UTC</td>
+<td class="py-space-sm px-space-md font-semibold text-slate-900">UK GDP (QoQ)</td>
+<td class="py-space-sm px-space-md font-tabular-sm text-tabular-sm text-slate-600">GBP</td>
+<td class="py-space-sm px-space-md">
+<span class="px-2 py-0.5 rounded bg-amber-50 border border-amber-200 text-amber-700 font-label-sm text-label-sm font-medium">Medium-High</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-600 font-tabular-sm text-tabular-sm">Spread Guard Active</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- 2-COLUMN SECTION: DEVICES & SESSIONS + PERMISSIONS -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg pt-space-md">
+<!-- SECTION 4: DEVICES & ACTIVE SESSIONS -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-headline-sm text-blue-600">devices</span>
+<h2 class="font-headline-sm text-headline-sm text-slate-900 font-bold">Devices &amp; Active Sessions</h2>
+<span class="material-symbols-outlined text-body-sm text-slate-400">info</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-slate-500">Authorized hardware and IP sessions currently connected to this trading profile.</p>
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<!-- Session 1: Current Device -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined text-headline-sm">laptop_mac</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-body-md text-body-md font-semibold text-slate-900">MacBook Pro 16" · Chrome 124</span>
+<span class="px-1.5 py-0.5 rounded bg-blue-50 border border-blue-200 text-blue-700 font-label-sm text-label-sm font-semibold">This Device</span>
+</div>
+<span class="font-tabular-sm text-tabular-sm text-slate-500">IP: 198.51.100.44 (London, UK) · Active now</span>
+</div>
+</div>
+<span class="font-tabular-sm text-tabular-sm text-blue-600 font-semibold">Session Valid</span>
+</div>
+<!-- Session 2: Workstation -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined text-headline-sm">desktop_windows</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-slate-900">Windows Workstation · Edge 123</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-500">IP: 203.0.113.19 (Frankfurt, DE) · Last active: 2 hours ago</span>
+</div>
+</div>
+<button class="px-space-md py-space-xs rounded-lg bg-slate-100 border border-slate-200 hover:bg-rose-50 hover:text-rose-700 hover:border-rose-200 text-slate-600 font-label-md text-label-md transition-colors" type="button">
+            Revoke
+          </button>
+</div>
+<!-- Session 3: iPhone -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined text-headline-sm">smartphone</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-slate-900">iPhone 15 Pro · Safari Mobile</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-500">IP: 198.51.100.82 (London, UK) · Last active: Yesterday 21:10 UTC</span>
+</div>
+</div>
+<button class="px-space-md py-space-xs rounded-lg bg-slate-100 border border-slate-200 hover:bg-rose-50 hover:text-rose-700 hover:border-rose-200 text-slate-600 font-label-md text-label-md transition-colors" type="button">
+            Revoke
+          </button>
+</div>
+<div class="pt-space-xs flex justify-end">
+<button class="px-space-md py-space-xs rounded-lg bg-white border border-slate-200 hover:bg-rose-50 hover:border-rose-200 text-rose-600 font-label-md text-label-md font-medium transition-colors shadow-xs" type="button">
+            Revoke All Other Sessions
+          </button>
+</div>
+</div>
+</div>
+<!-- SECTION 5: USER ROLES & PERMISSIONS -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-headline-sm text-blue-600">admin_panel_settings</span>
+<h2 class="font-headline-sm text-headline-sm text-slate-900 font-bold">User Roles &amp; Permissions</h2>
+<span class="material-symbols-outlined text-body-sm text-slate-400">info</span>
+</div>
+<p class="font-body-md text-body-md text-slate-500">Role-based access control explained in simple terms.</p>
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<!-- Role 1: Viewer -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-slate-900 font-semibold">Viewer</span>
+<span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-500 font-tabular-sm text-tabular-sm">0 users</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400 uppercase font-semibold">Read-Only</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">Can inspect dashboard, backtests, and journal. Cannot edit strategies, change risk rules, or toggle engine state.</p>
+</div>
+<!-- Role 2: Operator -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-slate-900 font-semibold">Operator</span>
+<span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-700 font-tabular-sm text-tabular-sm font-medium">1 user (Lead Quant)</span>
+</div>
+<span class="font-label-sm text-label-sm text-blue-600 uppercase font-semibold">Execution Access</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">Can adjust strategy parameters, launch paper forward tests, and configure risk limits. Cannot authorize real-money live broker keys.</p>
+</div>
+<!-- Role 3: Admin / Signer -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-slate-900 font-semibold">Admin / Signer</span>
+<span class="px-1.5 py-0.5 rounded bg-blue-50 border border-blue-200 text-blue-700 font-tabular-sm text-tabular-sm font-semibold">1 user (You)</span>
+</div>
+<span class="font-label-sm text-label-sm text-blue-600 uppercase font-semibold">Full Authority</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">Full authorization. Sole authority to enable live capital mode, modify kill switch thresholds, and sign API withdrawals.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 2-COLUMN SECTION: NOTIFICATIONS & ALERT ROUTING + LIVE MODE AUTHORIZATION -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg pt-space-md">
+<!-- SECTION 6: NOTIFICATIONS & ALERT ROUTING -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-headline-sm text-blue-600">notifications_active</span>
+<h2 class="font-headline-sm text-headline-sm text-slate-900 font-bold">Notifications &amp; Alert Routing</h2>
+<span class="material-symbols-outlined text-body-sm text-slate-400">info</span>
+</div>
+<p class="font-body-md text-body-md text-slate-500">Where the engine sends urgent margin warnings, trade fills, and halt alerts.</p>
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<!-- Push Notifications -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col justify-between gap-space-sm shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+<span class="material-symbols-outlined text-headline-sm">desktop_windows</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-slate-900">Push Notifications (Desktop &amp; Browser)</span>
+<p class="font-body-sm text-body-sm text-slate-500">Configured for: Emergency Kill switch, Daily Drawdown &gt; 1.5%, Trade Take-Profit hits.</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 font-tabular-sm text-tabular-sm font-semibold">Enabled</span>
+</div>
+</div>
+<!-- Telegram Bot -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col justify-between gap-space-sm shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+<span class="material-symbols-outlined text-headline-sm">send</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-slate-900">Telegram Bot Integration (@AuraFX_Guard_Bot)</span>
+<span class="font-tabular-sm text-tabular-sm text-slate-500">Chat ID: #782910291 · Status: Connected · Ping: 42ms</span>
+</div>
+</div>
+<button class="px-space-md py-space-xs rounded-lg bg-slate-100 border border-slate-200 hover:bg-slate-200 text-slate-700 font-label-md text-label-md font-medium transition-colors" type="button">
+              Test Ping
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 7: LIVE MODE AUTHORIZATION (LOCKED) -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-headline-sm text-amber-600">gavel</span>
+<h2 class="font-headline-sm text-headline-sm text-slate-900 font-bold">Live Mode Authorization</h2>
+<span class="material-symbols-outlined text-body-sm text-slate-400">info</span>
+</div>
+<p class="font-body-md text-body-md text-slate-500">Real-money live broker trading gateway.</p>
+<!-- Locked Banner Container -->
+<div class="bg-white border border-slate-200 rounded-xl p-space-md flex flex-col justify-between gap-space-md shadow-sm h-full">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-amber-600 text-headline-sm">lock</span>
+<span class="font-label-md text-label-md text-amber-700 font-semibold uppercase tracking-wider">Restricted Gateway</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-500 font-tabular-sm text-tabular-sm">Locked · Desktop Verification Required</span>
+</div>
+<div class="bg-slate-50 border border-slate-200 p-space-sm rounded-lg">
+<p class="font-body-md text-body-md text-slate-800 font-medium">Enabling Live mode requires re-authentication on desktop and is not available on mobile.</p>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">For institutional safety, switching execution from Paper Simulation to Live Capital requires a 2-factor hardware token authentication and a completed 30-day forward test pass verdict.</p>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm pt-space-sm">
+<button class="px-space-md py-space-sm rounded-lg bg-slate-100 border border-slate-200 text-slate-400 cursor-not-allowed font-label-md text-label-md flex items-center justify-center gap-space-xs" disabled="" type="button">
+<span class="material-symbols-outlined text-body-md">key_vertical</span>
+<span>Authenticate Hardware Key for Live Mode</span>
+</button>
+<span class="font-label-sm text-label-sm text-slate-400 text-right font-medium">Requires FIDO2 / YubiKey</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main></div></body></html>

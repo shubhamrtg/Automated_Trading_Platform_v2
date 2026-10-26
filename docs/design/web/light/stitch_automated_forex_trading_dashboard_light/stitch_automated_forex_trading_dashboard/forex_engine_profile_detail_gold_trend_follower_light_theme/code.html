@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary-fixed-dim": "#b4c5ff",
+          "inverse-primary": "#b4c5ff",
+          "secondary-fixed-dim": "#62df7d",
+          "surface-variant": "#dce2f3",
+          "error": "#dc2626",
+          "on-primary-fixed-variant": "#003ea8",
+          "tertiary-fixed": "#ffdad6",
+          "on-tertiary-fixed-variant": "#93000b",
+          "tertiary-container": "#d52022",
+          "on-tertiary": "#ffffff",
+          "on-secondary-fixed-variant": "#005320",
+          "primary": "#2563eb",
+          "on-error-container": "#991b1b",
+          "inverse-surface": "#2a313d",
+          "tertiary": "#ae0010",
+          "on-primary-fixed": "#00174b",
+          "on-background": "#0f172a",
+          "on-surface-variant": "#64748b",
+          "on-tertiary-container": "#ffecea",
+          "secondary": "#16a34a",
+          "primary-fixed": "#dbe1ff",
+          "secondary-container": "#7cf994",
+          "surface": "#ffffff",
+          "on-tertiary-fixed": "#410002",
+          "surface-container-highest": "#e2e8f0",
+          "inverse-on-surface": "#ebf1ff",
+          "background": "#f8fafc",
+          "surface-container": "#f1f5f9",
+          "surface-dim": "#e2e8f0",
+          "tertiary-fixed-dim": "#ffb4ab",
+          "surface-container-low": "#ffffff",
+          "error-container": "#fee2e2",
+          "on-secondary-container": "#007230",
+          "on-primary-container": "#1e40af",
+          "on-surface": "#0f172a",
+          "primary-container": "#eff6ff",
+          "surface-bright": "#ffffff",
+          "outline-variant": "#e2e8f0",
+          "on-primary": "#ffffff",
+          "secondary-fixed": "#7ffc97",
+          "on-error": "#ffffff",
+          "on-secondary-fixed": "#002109",
+          "on-secondary": "#ffffff",
+          "surface-tint": "#2563eb",
+          "outline": "#94a3b8",
+          "surface-container-high": "#e2e8f0",
+          "surface-container-lowest": "#ffffff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-lg": "1.5rem",
+          "gutter-compact": "0.5rem",
+          "margin-mobile": "1rem",
+          "space-sm": "0.5rem",
+          "space-md": "1rem",
+          "gutter": "1rem",
+          "space-xl": "2rem",
+          "space-xs": "0.25rem",
+          "margin": "1.5rem"
+        },
+        "fontFamily": {
+          "display-lg": ["Inter", "sans-serif"],
+          "body-md": ["Inter", "sans-serif"],
+          "tabular-md": ["JetBrains Mono", "monospace"],
+          "headline-lg": ["Inter", "sans-serif"],
+          "tabular-lg": ["JetBrains Mono", "monospace"],
+          "label-md": ["Inter", "sans-serif"],
+          "tabular-sm": ["JetBrains Mono", "monospace"],
+          "label-sm": ["Inter", "sans-serif"],
+          "body-sm": ["Inter", "sans-serif"],
+          "headline-sm": ["Inter", "sans-serif"],
+          "body-lg": ["Inter", "sans-serif"]
+        },
+        "fontSize": {
+          "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+          "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+          "tabular-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+          "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+          "tabular-lg": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+          "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+          "tabular-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+          "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+          "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+          "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+          "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+        }
+      }
+    }
+  };
+</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface border-r border-outline-variant z-50 flex flex-col justify-between py-space-md"><div class="flex flex-col gap-space-lg"><div class="px-space-lg flex items-center gap-space-sm"><img alt="Forex Engine Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XWUydqMbLL7XqjB1dnTCSwCtH9jTtr1aFFSyvmzFu1EmlTQ02tuuziKeO9nRB8-Zl7nsUQVIjT2qnNjcnQfGW7lFp14EUD07baKYm1J779KCA9KSPk9lEnLE_5zf8IiyH0oFwXTJbQuXSEheBEKW8gzRjFOKOPVDOIyuwbpm0tv2ZdoQhf50Vf6FNtIithdhXMozSj0IJ2q8bVUstlHJp3gXfdfG7kKOhwFunW_-8pQ_AXQ_WUbYkLx2Y2"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">AuraFX</span><span class="font-label-sm text-label-sm text-outline tracking-wider uppercase mt-space-xs font-semibold">Engine v4.2</span></div></div><nav class="flex flex-col gap-space-xs px-space-sm" data-active-classes="bg-primary text-white font-headline-sm shadow-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-body-lg">grid_view</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-primary text-white font-headline-sm shadow-sm transition-colors" data-path="profiles" href="#"><span class="material-symbols-outlined text-body-lg">badge</span><span class="font-body-md text-body-md font-semibold">Profiles</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="strategies" href="#"><span class="material-symbols-outlined text-body-lg">tune</span><span class="font-body-md text-body-md">Strategies</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="backtests" href="#"><span class="material-symbols-outlined text-body-lg">history</span><span class="font-body-md text-body-md">Backtests</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="forward-tests" href="#"><span class="material-symbols-outlined text-body-lg">timeline</span><span class="font-body-md text-body-md">Forward Tests</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="trades-and-journal" href="#"><span class="material-symbols-outlined text-body-lg">receipt_long</span><span class="font-body-md text-body-md">Trades &amp; Journal</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="ai-assistant" href="#"><span class="material-symbols-outlined text-body-lg">smart_toy</span><span class="font-body-md text-body-md">AI Assistant</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="risk-and-settings" href="#"><span class="material-symbols-outlined text-body-lg">shield</span><span class="font-body-md text-body-md">Risk &amp; Settings</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="help" href="#"><span class="material-symbols-outlined text-body-lg">help</span><span class="font-body-md text-body-md">Help</span></a></nav></div><div class="px-space-md flex flex-col gap-space-xs"><div class="bg-surface-container border border-outline-variant/60 p-space-sm rounded-lg flex items-center justify-between"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Latency</span><span class="font-tabular-sm text-tabular-sm text-on-surface font-semibold">14.2 ms</span></div><div class="flex flex-col items-end"><span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Slippage</span><span class="font-tabular-sm text-tabular-sm text-on-surface font-semibold">0.02 pip</span></div></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/90 backdrop-blur-xl border-b border-outline-variant z-40 px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-semibold">Dashboard</span><span class="font-body-sm text-body-sm text-on-surface-variant">Automated strategy execution and portfolio health</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container border border-outline-variant/70 shadow-sm"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span></span><span class="font-tabular-sm text-tabular-sm text-on-surface font-medium">Engine online</span><span class="font-label-sm text-label-sm text-outline">• 2s ago</span></div><button class="w-9 h-9 rounded-lg border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors shadow-sm" id="theme-toggle-btn" onclick="document.documentElement.classList.toggle('dark')" title="Switch to dark theme" type="button"><span class="material-symbols-outlined text-body-lg">dark_mode</span></button><button class="px-space-md py-space-xs rounded-lg bg-red-600 text-white hover:bg-red-700 transition-colors flex items-center gap-space-xs font-label-md text-label-md uppercase tracking-wide font-semibold shadow-sm" type="button"><span class="material-symbols-outlined text-body-md">emergency</span><span>Kill Switch</span></button><div class="relative flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-outline-variant/80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDDmrn61MjJkTPH4SPQpG39G3hngLE-0c-S5am75zO69fwU1KWEWR9q8mtsJ08k7MiO7RTTTU0Y-P3cb-2QbyiDM4lGXfV2T5JIQiilCGXDI_r7wWUVoVT-AUMgT1PPeY_EgCxKe1M_HcnR8FZG4ZdooANMcAuGhaxDeRI2EMIQJXtsFFUrfueRMMiMXHV8H2CMWr30EVuKxtTBW8G6Ge0dnxWn_p7xyuK4Rs1i3kavaERUwd6WgKxFg"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full ring-2 ring-white"></span></div></div></header><main class="relative pt-16 bg-background min-h-screen w-full px-space-lg py-space-lg"><div class="flex flex-col w-full">
+<!-- Interactive Script: Active Navigation & Tabs -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Set active state on Profiles in the sidebar
+      const navLinks = document.querySelectorAll("aside nav a");
+      navLinks.forEach((link) => {
+        if (link.getAttribute("data-path") === "profiles") {
+          link.className =
+            "flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-primary text-white font-headline-sm shadow-sm transition-colors";
+        } else {
+          link.classList.remove(
+            "bg-primary",
+            "text-white",
+            "font-headline-sm"
+          );
+        }
+      });
+    });
+
+    function switchTab(evt, tabId) {
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.classList.remove(
+          "text-primary",
+          "border-b-2",
+          "border-primary",
+          "font-semibold"
+        );
+        btn.classList.add("text-on-surface-variant");
+      });
+      evt.currentTarget.classList.add(
+        "text-primary",
+        "border-b-2",
+        "border-primary",
+        "font-semibold"
+      );
+      evt.currentTarget.classList.remove("text-on-surface-variant");
+    }
+  </script>
+<!-- Profile Header & Global Action Zone -->
+<section class="flex flex-col gap-space-md mb-space-lg">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-space-xs font-label-md text-label-md text-outline">
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-space-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+<span>Profiles</span>
+</a>
+<span>/</span>
+<span class="text-on-surface font-semibold text-label-md">Gold Trend Follower</span>
+</div>
+<!-- Title, Indicators & Controls Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface p-space-lg rounded-xl border border-outline-variant shadow-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center flex-wrap gap-space-sm">
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight font-bold">
+            Gold Trend Follower
+          </h1>
+<span class="px-space-sm py-0.5 rounded font-tabular-sm text-tabular-sm bg-blue-50 text-blue-700 border border-blue-200 uppercase font-bold tracking-wider">
+            PAPER
+          </span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Running
+          </span>
+</div>
+<div class="flex items-center flex-wrap gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
+<span class="text-on-surface font-semibold font-tabular-sm">XAUUSD</span>
+<span>•</span>
+<span class="font-tabular-sm">H1 Timeframe</span>
+<span>•</span>
+<span>EMA ATR Trend v1.4</span>
+<span>•</span>
+<span class="font-tabular-sm text-outline">Engine ID: #FX-88029</span>
+</div>
+</div>
+<!-- Header Action Group with Open Tooltip -->
+<div class="flex items-center gap-space-md relative self-start lg:self-center">
+<button class="px-space-md py-space-sm rounded-lg bg-surface hover:bg-surface-container text-on-surface border border-outline-variant transition-colors flex items-center gap-space-xs font-label-md text-label-md shadow-sm font-medium" type="button">
+<span class="material-symbols-outlined text-body-md text-outline">pause_circle</span>
+<span>Pause Engine</span>
+</button>
+<!-- Change Strategy Container with Explicit Pinned Tooltip -->
+<div class="relative group">
+<button class="px-space-md py-space-sm rounded-lg bg-surface-container text-outline border border-outline-variant/60 cursor-not-allowed flex items-center gap-space-xs font-label-md text-label-md opacity-60 shadow-sm" disabled="" type="button">
+<span class="material-symbols-outlined text-body-md">lock</span>
+<span>Change Strategy</span>
+</button>
+<!-- Permanently Displayed Pinned Tooltip -->
+<div class="absolute bottom-full right-0 mb-space-sm w-72 bg-slate-900 text-white rounded-lg p-space-sm shadow-xl z-30 pointer-events-none">
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-amber-400 text-[18px] shrink-0 mt-0.5">
+                info
+              </span>
+<p class="font-body-sm text-body-sm text-slate-100 leading-tight">
+                This profile has an open position. You can make changes when it's flat (no open positions).
+              </p>
+</div>
+<!-- Arrow -->
+<div class="w-2.5 h-2.5 bg-slate-900 rotate-45 absolute -bottom-1 right-8 shadow-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- At A Glance Banner -->
+<div class="bg-surface p-space-md rounded-xl border border-outline-variant flex flex-col md:flex-row md:items-center justify-between gap-space-sm shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-blue-50 text-primary border border-blue-100 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-body-lg">visibility</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+<span class="font-semibold text-primary">At a glance:</span>
+          Profile active in Paper sandbox for 6 days. Currently holding 1 long position on Gold (
+          <span class="font-tabular-md text-emerald-600 font-semibold">+0.78% ▲</span> in the money). All risk filters nominal.
+        </p>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="px-space-sm py-0.5 rounded font-label-sm text-label-sm bg-surface-container text-on-surface-variant border border-outline-variant uppercase font-semibold tracking-wider">
+          PAPER MODE
+        </span>
+<span class="px-space-sm py-0.5 rounded font-label-sm text-label-sm bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase font-semibold tracking-wider">
+          RISK GUARDRAILS ACTIVE
+        </span>
+</div>
+</div>
+<!-- Tabbed Navigation -->
+<div class="flex items-center gap-space-md bg-surface px-space-md rounded-lg border border-outline-variant overflow-x-auto shadow-sm">
+<button class="tab-btn px-space-sm py-space-md font-semibold text-body-md text-primary border-b-2 border-primary transition-all whitespace-nowrap" onclick="switchTab(event, 'overview')">
+        Overview
+      </button>
+<button class="tab-btn px-space-sm py-space-md font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-all whitespace-nowrap" onclick="switchTab(event, 'parameters')">
+        Parameters
+      </button>
+<button class="tab-btn px-space-sm py-space-md font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-all whitespace-nowrap flex items-center gap-space-xs" onclick="switchTab(event, 'trades')">
+<span>Trades</span>
+<span class="px-1.5 py-0.5 rounded-full text-label-sm bg-surface-container font-semibold text-on-surface border border-outline-variant">1</span>
+</button>
+<button class="tab-btn px-space-sm py-space-md font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-all whitespace-nowrap" onclick="switchTab(event, 'risk')">
+        Risk &amp; Guardrails
+      </button>
+<button class="tab-btn px-space-sm py-space-md font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-all whitespace-nowrap" onclick="switchTab(event, 'history')">
+        History / Logs
+      </button>
+</div>
+</section>
+<!-- Lifecycle Stage & Next Step Section -->
+<section class="grid grid-cols-1 xl:grid-cols-12 gap-space-md mb-space-lg">
+<!-- 5-Step Pipeline -->
+<div class="xl:col-span-8 bg-surface p-space-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Deployment Pipeline</span>
+<span class="font-tabular-sm text-tabular-sm text-outline font-medium">Sandbox Evaluation Stage</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-5 gap-space-sm">
+<!-- Step 1 -->
+<div class="flex flex-col gap-space-xs p-space-sm rounded-lg bg-surface-container border border-outline-variant/60">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">STEP 01</span>
+<span class="material-symbols-outlined text-emerald-600 text-body-md">check_circle</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">Strategy Draft</span>
+<span class="font-label-sm text-label-sm text-emerald-600 font-semibold">Completed ✓</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col gap-space-xs p-space-sm rounded-lg bg-surface-container border border-outline-variant/60">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">STEP 02</span>
+<span class="material-symbols-outlined text-emerald-600 text-body-md">check_circle</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">Backtested</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-tabular-sm font-medium">99.4% Tick ✓</span>
+</div>
+<!-- Step 3 (Active) -->
+<div class="flex flex-col gap-space-xs p-space-sm rounded-lg bg-blue-600 text-white shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-blue-100 uppercase tracking-wider font-bold">
+              STEP 03 · ACTIVE
+            </span>
+<span class="w-2.5 h-2.5 rounded-full bg-white animate-ping"></span>
+</div>
+<span class="font-headline-sm text-headline-sm text-white font-semibold">Paper Sim</span>
+<span class="font-tabular-sm text-tabular-sm text-blue-100 font-medium">Day 6 / 14</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col gap-space-xs p-space-sm rounded-lg bg-surface-container border border-outline-variant/60 opacity-60">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">STEP 04</span>
+<span class="material-symbols-outlined text-outline text-body-md">pending</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface">Forward-Tested</span>
+<span class="font-label-sm text-label-sm text-outline">Target Phase</span>
+</div>
+<!-- Step 5 -->
+<div class="flex flex-col gap-space-xs p-space-sm rounded-lg bg-surface-container border border-outline-variant/60 opacity-40">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">STEP 05</span>
+<span class="material-symbols-outlined text-outline text-body-md">lock</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface">Live Capital</span>
+<span class="font-label-sm text-label-sm text-outline">Gate Protected 🔒</span>
+</div>
+</div>
+</div>
+<!-- Next Step Milestone Card -->
+<div class="xl:col-span-4 bg-surface p-space-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="material-symbols-outlined text-amber-500 text-headline-sm">flag</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Next Milestone</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        Reach 14 consecutive paper trading days with positive expectancy. Currently at
+        <span class="text-on-surface font-tabular-md font-semibold">Day 6/14</span> with
+        <span class="text-emerald-600 font-tabular-md font-semibold">68.4%</span> win rate.
+      </p>
+<div class="mt-space-md pt-space-sm flex items-center justify-between bg-surface-container border border-outline-variant/60 p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Target Validation</span>
+<span class="font-tabular-sm text-tabular-sm text-primary font-bold">Nov 18, 2024</span>
+</div>
+</div>
+</section>
+<!-- Live Simulated Position Card -->
+<section class="bg-surface p-space-lg rounded-xl border border-outline-variant shadow-sm mb-space-lg">
+<!-- Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-md border-b border-outline-variant/70">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">
+          LIVE POSITION (SIMULATED)
+        </span>
+<span class="px-2 py-0.5 rounded text-label-sm font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">BUY / LONG</span>
+<span class="font-tabular-md text-tabular-md text-on-surface font-semibold">XAUUSD</span>
+<span class="text-outline text-body-sm font-tabular-sm font-medium">0.50 Lots</span>
+</div>
+<div class="flex items-center gap-space-md font-tabular-sm text-tabular-sm text-on-surface-variant">
+<span>Ticket #849204</span>
+<span>•</span>
+<span>Executed: Today, 09:14:02 UTC</span>
+</div>
+</div>
+<!-- Key Values Blotter Grid -->
+<div class="grid grid-cols-2 md:grid-cols-5 gap-space-md pt-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Entry Price</span>
+<span class="font-tabular-lg text-tabular-lg text-on-surface font-bold">2,345.10</span>
+<span class="font-label-sm text-label-sm text-outline">Filled at ask</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Current Price</span>
+<span class="font-tabular-lg text-tabular-lg text-on-surface font-bold">2,348.78</span>
+<span class="font-tabular-sm text-tabular-sm text-emerald-600 font-semibold">+3.68 pts ▲</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Stop Loss (SL)</span>
+<span class="font-tabular-lg text-tabular-lg text-red-600 font-bold">2,331.40</span>
+<span class="font-tabular-sm text-tabular-sm text-red-600 font-semibold">-13.70 pts (-$68.50) ▼</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Take Profit (TP)</span>
+<span class="font-tabular-lg text-tabular-lg text-emerald-600 font-bold">2,366.00</span>
+<span class="font-tabular-sm text-tabular-sm text-emerald-600 font-semibold">+20.90 pts (+$104.50) ▲</span>
+</div>
+<div class="flex flex-col gap-0.5 bg-emerald-50 border border-emerald-200 p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-emerald-800 uppercase tracking-wider font-semibold">Floating P&amp;L</span>
+<span class="font-display-lg text-display-lg text-emerald-600 font-bold">+$18.40 ▲</span>
+<span class="font-tabular-sm text-tabular-sm text-emerald-700 font-semibold">+0.78% ▲ unrealized</span>
+</div>
+</div>
+<!-- Visual SL-to-TP Gauge Progress -->
+<div class="mt-space-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-tabular-sm text-tabular-sm">
+<span class="text-red-600 font-semibold">SL: 2,331.40 (Risk: -$68.50 ▼ · 1.00R)</span>
+<span class="text-on-surface font-semibold">Current: 2,348.78 (50.2% to TP)</span>
+<span class="text-emerald-600 font-semibold">TP: 2,366.00 (Reward: +$104.50 ▲ · 1.52R)</span>
+</div>
+<div class="relative w-full h-3 rounded-full bg-surface-container overflow-hidden flex items-center border border-outline-variant/60">
+<!-- Stop Loss Range -->
+<div class="h-full bg-red-200 w-[39.5%]"></div>
+<!-- Breakeven Line -->
+<div class="w-1 h-full bg-slate-500 z-10" title="Entry: 2345.10"></div>
+<!-- Profit Range Filled to Current -->
+<div class="h-full bg-emerald-500 w-[10.7%]"></div>
+<!-- Unfilled Potential to TP -->
+<div class="h-full bg-emerald-100 w-[49.8%]"></div>
+</div>
+<div class="flex justify-between items-center text-outline font-label-sm text-label-sm mt-1">
+<span>Max Drawdown Risk Bound</span>
+<span>Trailing Breakeven Armed</span>
+<span>Target Expansion Zone</span>
+</div>
+</div>
+</section>
+<!-- 4 Performance Metric Cards -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Card 1: Total Return -->
+<div class="bg-surface p-space-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Total Return</span>
+<span class="material-symbols-outlined text-[16px] cursor-help" title="Cumulative paper gains">info</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-emerald-600 font-tabular-lg tracking-tight font-bold">
+          +$1,482.50 ▲
+        </div>
+<div class="font-tabular-sm text-tabular-sm text-emerald-700 font-semibold mt-0.5">+14.6% ▲ Net Return</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-md">
+        Cumulative net gains since paper sandbox activation.
+      </p>
+</div>
+<!-- Card 2: Max Drawdown -->
+<div class="bg-surface p-space-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Max Drawdown</span>
+<span class="material-symbols-outlined text-[16px] cursor-help" title="Historical peak to trough drop">info</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-red-600 font-tabular-lg tracking-tight font-bold">
+          -1.10% ▼
+        </div>
+<div class="font-tabular-sm text-tabular-sm text-red-600 font-semibold mt-0.5">-$115.30 ▼ Max Dip</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-md">
+        Deepest peak-to-trough drop; safely under 2.5% threshold.
+      </p>
+</div>
+<!-- Card 3: Win Rate -->
+<div class="bg-surface p-space-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Win Rate</span>
+<span class="material-symbols-outlined text-[16px] cursor-help" title="Percentage of closed profitable trades">info</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-on-surface font-tabular-lg tracking-tight font-bold">
+          68.4%
+        </div>
+<div class="font-tabular-sm text-tabular-sm text-on-surface-variant font-medium mt-0.5">19W - 9L (28 total)</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-md">
+        19 winning trades out of 28 total executions.
+      </p>
+</div>
+<!-- Card 4: Total Trades -->
+<div class="bg-surface p-space-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Total Trades</span>
+<span class="material-symbols-outlined text-[16px] cursor-help" title="Order fills count">info</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-on-surface font-tabular-lg tracking-tight font-bold">
+          28
+        </div>
+<div class="font-tabular-sm text-tabular-sm text-primary font-semibold mt-0.5">Profit Factor: 2.84</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-md">
+        Average hold time: 4h 12m · Profit factor: 2.84
+      </p>
+</div>
+</section>
+<!-- Bottom Workspace: Equity Growth, Parameters & Blotter -->
+<section class="grid grid-cols-1 xl:grid-cols-12 gap-space-md mb-space-lg">
+<!-- Simulated Equity Chart Card -->
+<div class="xl:col-span-8 bg-surface p-space-lg rounded-xl border border-outline-variant shadow-sm flex flex-col">
+<div class="flex items-center justify-between mb-space-md flex-wrap gap-space-sm">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Simulated Equity Curve</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Starting Balance: $10,000.00 → Current: $11,482.50</span>
+</div>
+<!-- Timeframe Selector -->
+<div class="flex items-center gap-1 bg-surface-container border border-outline-variant/60 p-1 rounded-lg">
+<button class="px-space-sm py-1 rounded font-tabular-sm text-tabular-sm bg-primary text-white font-semibold shadow-xs">
+            6D
+          </button>
+<button class="px-space-sm py-1 rounded font-tabular-sm text-tabular-sm text-on-surface-variant hover:text-on-surface font-medium">
+            1M
+          </button>
+<button class="px-space-sm py-1 rounded font-tabular-sm text-tabular-sm text-on-surface-variant hover:text-on-surface font-medium">
+            ALL
+          </button>
+</div>
+</div>
+<!-- Rich Inline SVG Vector Chart with Gradient Area Fill (Institutional Light Mode) -->
+<div class="relative w-full h-64 mt-space-sm">
+<svg class="w-full h-full overflow-visible" fill="none" viewbox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="equityGrad" x1="0" x2="0" y1="0" y2="220">
+<stop offset="0%" stop-color="#2563eb" stop-opacity="0.22"></stop>
+<stop offset="100%" stop-color="#2563eb" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Horizontal Reference Gridlines -->
+<line stroke="#e2e8f0" stroke-dasharray="3 3" x1="0" x2="600" y1="20" y2="20"></line>
+<line stroke="#e2e8f0" stroke-dasharray="3 3" x1="0" x2="600" y1="70" y2="70"></line>
+<line stroke="#e2e8f0" stroke-dasharray="3 3" x1="0" x2="600" y1="120" y2="120"></line>
+<line stroke="#e2e8f0" stroke-dasharray="3 3" x1="0" x2="600" y1="170" y2="170"></line>
+<!-- Value Labels on Right Axis -->
+<text fill="#64748b" font-family="JetBrains Mono" font-size="10" text-anchor="end" x="595" y="24">
+            $11,500
+          </text>
+<text fill="#64748b" font-family="JetBrains Mono" font-size="10" text-anchor="end" x="595" y="74">
+            $11,000
+          </text>
+<text fill="#64748b" font-family="JetBrains Mono" font-size="10" text-anchor="end" x="595" y="124">
+            $10,500
+          </text>
+<text fill="#64748b" font-family="JetBrains Mono" font-size="10" text-anchor="end" x="595" y="174">
+            $10,000
+          </text>
+<!-- Gradient Fill Area -->
+<path d="M 10 180 L 110 160 L 190 145 L 260 165 L 340 110 L 420 85 L 500 95 L 580 25 L 580 210 L 10 210 Z" fill="url(#equityGrad)"></path>
+<!-- Equity Line Path -->
+<path d="M 10 180 L 110 160 L 190 145 L 260 165 L 340 110 L 420 85 L 500 95 L 580 25" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<!-- Coordinate Data Point Dots -->
+<circle cx="10" cy="180" fill="#2563eb" r="3.5"></circle>
+<circle cx="110" cy="160" fill="#2563eb" r="3.5"></circle>
+<circle cx="190" cy="145" fill="#2563eb" r="3.5"></circle>
+<circle cx="260" cy="165" fill="#dc2626" r="3.5"></circle>
+<!-- Small pullback -->
+<circle cx="340" cy="110" fill="#2563eb" r="3.5"></circle>
+<circle cx="420" cy="85" fill="#2563eb" r="3.5"></circle>
+<circle cx="500" cy="95" fill="#2563eb" r="3.5"></circle>
+<circle cx="580" cy="25" fill="#16a34a" r="5" stroke="#ffffff" stroke-width="2"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex justify-between items-center text-outline font-tabular-sm text-tabular-sm pt-2">
+<span>Day 1 ($10,000)</span>
+<span>Day 2</span>
+<span>Day 3</span>
+<span>Day 4</span>
+<span>Day 5</span>
+<span class="text-on-surface font-semibold">Today (Day 6: $11,482.50)</span>
+</div>
+</div>
+</div>
+<!-- Engine Parameters & Telemetry Health -->
+<div class="xl:col-span-4 bg-surface p-space-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Engine Health</span>
+<span class="material-symbols-outlined text-outline text-body-lg">tune</span>
+</div>
+<div class="flex flex-col gap-space-xs font-tabular-sm text-tabular-sm">
+<div class="flex items-center justify-between py-1.5 px-space-sm bg-surface-container rounded border border-outline-variant/50">
+<span class="text-on-surface-variant">Fast EMA Period</span>
+<span class="text-on-surface font-bold">12</span>
+</div>
+<div class="flex items-center justify-between py-1.5 px-space-sm bg-surface-container rounded border border-outline-variant/50">
+<span class="text-on-surface-variant">Slow EMA Period</span>
+<span class="text-on-surface font-bold">26</span>
+</div>
+<div class="flex items-center justify-between py-1.5 px-space-sm bg-surface-container rounded border border-outline-variant/50">
+<span class="text-on-surface-variant">ATR Multiplier Band</span>
+<span class="text-on-surface font-bold">2.0</span>
+</div>
+<div class="flex items-center justify-between py-1.5 px-space-sm bg-surface-container rounded border border-outline-variant/50">
+<span class="text-on-surface-variant">Max Lot Size</span>
+<span class="text-on-surface font-bold">0.50 Lots</span>
+</div>
+<div class="flex items-center justify-between py-1.5 px-space-sm bg-surface-container rounded border border-outline-variant/50">
+<span class="text-on-surface-variant">Max Slippage Tolerance</span>
+<span class="text-on-surface font-bold">0.3 pips</span>
+</div>
+<div class="flex items-center justify-between py-1.5 px-space-sm bg-surface-container rounded border border-outline-variant/50">
+<span class="text-on-surface-variant">Circuit Breaker Arm</span>
+<span class="text-red-600 font-bold">2.50% DD</span>
+</div>
+</div>
+</div>
+<!-- Live Heartbeat status pill -->
+<div class="mt-space-md p-space-sm bg-surface-container rounded-lg border border-outline-variant/60 flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-body-md animate-spin">sync</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Next ATR Signal Evaluation</span>
+</div>
+<span class="font-tabular-sm text-tabular-sm text-primary font-bold">41m 18s</span>
+</div>
+</div>
+</section>
+<!-- Recent Closed Positions (Blotter Table) -->
+<section class="bg-surface p-space-lg rounded-xl border border-outline-variant shadow-sm mb-space-lg">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Recent Closed Trades</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container border border-outline-variant text-on-surface-variant uppercase font-semibold">
+          Simulation Blotter
+        </span>
+</div>
+<a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-0.5 font-semibold" href="#">
+<span>View all 28 executions</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Blotter Table Container -->
+<div class="overflow-x-auto rounded-lg border border-outline-variant">
+<table class="w-full text-left font-tabular-sm text-tabular-sm">
+<thead>
+<tr class="text-on-surface-variant uppercase font-label-sm text-label-sm bg-surface-container border-b border-outline-variant font-semibold">
+<th class="py-2.5 px-space-md">Ticket</th>
+<th class="py-2.5 px-space-md">Type</th>
+<th class="py-2.5 px-space-md text-right">Lots</th>
+<th class="py-2.5 px-space-md text-right">Entry</th>
+<th class="py-2.5 px-space-md text-right">Exit</th>
+<th class="py-2.5 px-space-md text-right">Points</th>
+<th class="py-2.5 px-space-md text-right">Realized Net P&amp;L</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50 bg-surface">
+<!-- Row 1 (Win) -->
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-md text-on-surface font-bold">#849182</td>
+<td class="py-2.5 px-space-md">
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">BUY</span>
+</td>
+<td class="py-2.5 px-space-md text-right text-on-surface font-medium">0.50</td>
+<td class="py-2.5 px-space-md text-right text-on-surface-variant">2,328.40</td>
+<td class="py-2.5 px-space-md text-right text-on-surface-variant">2,342.90</td>
+<td class="py-2.5 px-space-md text-right text-emerald-600 font-semibold">+14.50 pts ▲</td>
+<td class="py-2.5 px-space-md text-right font-bold text-emerald-600">+$72.50 ▲</td>
+</tr>
+<!-- Row 2 (Loss) -->
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-md text-on-surface font-bold">#849140</td>
+<td class="py-2.5 px-space-md">
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-red-50 text-red-700 border border-red-200">SELL</span>
+</td>
+<td class="py-2.5 px-space-md text-right text-on-surface font-medium">0.50</td>
+<td class="py-2.5 px-space-md text-right text-on-surface-variant">2,335.20</td>
+<td class="py-2.5 px-space-md text-right text-on-surface-variant">2,341.60</td>
+<td class="py-2.5 px-space-md text-right text-red-600 font-semibold">-6.40 pts ▼</td>
+<td class="py-2.5 px-space-md text-right font-bold text-red-600">-$32.00 ▼</td>
+</tr>
+<!-- Row 3 (Win) -->
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-md text-on-surface font-bold">#849098</td>
+<td class="py-2.5 px-space-md">
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">BUY</span>
+</td>
+<td class="py-2.5 px-space-md text-right text-on-surface font-medium">0.50</td>
+<td class="py-2.5 px-space-md text-right text-on-surface-variant">2,312.10</td>
+<td class="py-2.5 px-space-md text-right text-on-surface-variant">2,333.40</td>
+<td class="py-2.5 px-space-md text-right text-emerald-600 font-semibold">+21.30 pts ▲</td>
+<td class="py-2.5 px-space-md text-right font-bold text-emerald-600">+$106.50 ▲</td>
+</tr>
+<!-- Row 4 (Flat/Scratch Win) -->
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-md text-on-surface font-bold">#848972</td>
+<td class="py-2.5 px-space-md">
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">BUY</span>
+</td>
+<td class="py-2.5 px-space-md text-right text-on-surface font-medium">0.50</td>
+<td class="py-2.5 px-space-md text-right text-on-surface-variant">2,319.80</td>
+<td class="py-2.5 px-space-md text-right text-on-surface-variant">2,321.40</td>
+<td class="py-2.5 px-space-md text-right text-emerald-600 font-semibold">+1.60 pts ▲</td>
+<td class="py-2.5 px-space-md text-right font-bold text-emerald-600">+$8.00 ▲</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div></main></div></body></html>

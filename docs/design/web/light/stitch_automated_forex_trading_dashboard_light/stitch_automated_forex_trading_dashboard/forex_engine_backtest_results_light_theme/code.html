@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><title>Forex Engine - Backtest Results (Light Theme)</title><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
+  theme: {
+    extend: {
+      "colors": {
+        "on-primary-fixed": "#00174b",
+        "surface-container": "#f1f5f9",
+        "on-error": "#ffffff",
+        "surface-container-low": "#f8fafc",
+        "primary-fixed-dim": "#b4c5ff",
+        "on-secondary": "#ffffff",
+        "background": "#f8fafc",
+        "error-container": "#fee2e2",
+        "secondary-container": "#dcfce7",
+        "on-surface-variant": "#64748b",
+        "on-surface": "#0f172a",
+        "surface-container-lowest": "#ffffff",
+        "inverse-primary": "#b4c5ff",
+        "surface": "#ffffff",
+        "secondary-fixed-dim": "#62df7d",
+        "surface-tint": "#2563eb",
+        "on-primary": "#ffffff",
+        "on-tertiary-fixed-variant": "#93000b",
+        "on-secondary-fixed-variant": "#005320",
+        "inverse-on-surface": "#ebf1ff",
+        "on-primary-container": "#ffffff",
+        "surface-bright": "#ffffff",
+        "on-secondary-fixed": "#002109",
+        "surface-variant": "#e2e8f0",
+        "on-error-container": "#991b1b",
+        "on-primary-fixed-variant": "#003ea8",
+        "tertiary-fixed": "#ffdad6",
+        "error": "#dc2626",
+        "surface-container-highest": "#e2e8f0",
+        "outline-variant": "#e2e8f0",
+        "on-tertiary": "#ffffff",
+        "secondary": "#16a34a",
+        "primary-container": "#2563eb",
+        "tertiary-fixed-dim": "#ffb4ab",
+        "on-tertiary-container": "#9a3412",
+        "on-background": "#0f172a",
+        "tertiary": "#d97706",
+        "on-secondary-container": "#15803d",
+        "primary": "#2563eb",
+        "surface-dim": "#e2e8f0",
+        "inverse-surface": "#1e293b",
+        "surface-container-high": "#f1f5f9",
+        "primary-fixed": "#dbe1ff",
+        "secondary-fixed": "#7ffc97",
+        "outline": "#94a3b8",
+        "tertiary-container": "#fef3c7",
+        "on-tertiary-fixed": "#410002"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "space-xl": "1.5rem",
+        "margin": "1rem",
+        "space-lg": "1rem",
+        "space-sm": "0.5rem",
+        "gutter-dense": "0.5rem",
+        "gutter": "1rem",
+        "space-md": "0.75rem",
+        "space-xs": "0.25rem"
+      },
+      "fontFamily": {
+        "label-sm": ["Inter"],
+        "data-sm": ["JetBrains Mono"],
+        "data-md": ["JetBrains Mono"],
+        "body-md": ["Inter"],
+        "body-sm": ["Inter"],
+        "caption": ["Inter"],
+        "data-lg": ["JetBrains Mono"],
+        "headline-sm": ["Inter"],
+        "display": ["Inter"],
+        "headline-md": ["Inter"],
+        "body-lg": ["Inter"],
+        "label-md": ["Inter"],
+        "headline-lg": ["Inter"],
+        "tabular-sm": ["JetBrains Mono"],
+        "tabular-md": ["JetBrains Mono"],
+        "tabular-lg": ["JetBrains Mono"],
+        "display-lg": ["Inter"]
+      },
+      "fontSize": {
+        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+        "data-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0em", "fontWeight": "400" }],
+        "data-md": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+        "body-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+        "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "400" }],
+        "caption": ["10px", { "lineHeight": "12px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+        "data-lg": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+        "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+        "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+        "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }],
+        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+        "tabular-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+        "tabular-md": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+        "tabular-lg": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+      }
+    }
+  }
+};</script></head><body class="bg-[#f8fafc] font-body-md text-body-md text-slate-800 antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-slate-200 z-50 flex flex-col justify-between py-space-md shadow-sm"><div class="flex flex-col gap-space-lg"><div class="px-space-lg flex items-center gap-space-sm"><img alt="Forex Engine Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XWUydqMbLL7XqjB1dnTCSwCtH9jTtr1aFFSyvmzFu1EmlTQ02tuuziKeO9nRB8-Zl7nsUQVIjT2qnNjcnQfGW7lFp14EUD07baKYm1J779KCA9KSPk9lEnLE_5zf8IiyH0oFwXTJbQuXSEheBEKW8gzRjFOKOPVDOIyuwbpm0tv2ZdoQhf50Vf6FNtIithdhXMozSj0IJ2q8bVUstlHJp3gXfdfG7kKOhwFunW_-8pQ_AXQ_WUbYkLx2Y2"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-slate-900 tracking-tight leading-none">AuraFX</span><span class="font-label-sm text-label-sm text-slate-400 tracking-wider uppercase mt-space-xs font-semibold">Engine v4.2</span></div></div><nav class="flex flex-col gap-space-xs px-space-sm" data-active-classes="bg-blue-600 text-white font-headline-sm shadow-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-body-lg">grid_view</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="profiles" href="#"><span class="material-symbols-outlined text-body-lg">badge</span><span class="font-body-md text-body-md">Profiles</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="strategies" href="#"><span class="material-symbols-outlined text-body-lg">tune</span><span class="font-body-md text-body-md">Strategies</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-blue-600 text-white font-headline-sm shadow-sm transition-colors" data-path="backtests" href="#"><span class="material-symbols-outlined text-body-lg">history</span><span class="font-body-md text-body-md font-medium">Backtests</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="forward-tests" href="#"><span class="material-symbols-outlined text-body-lg">timeline</span><span class="font-body-md text-body-md">Forward Tests</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="trades-and-journal" href="#"><span class="material-symbols-outlined text-body-lg">receipt_long</span><span class="font-body-md text-body-md">Trades &amp; Journal</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="ai-assistant" href="#"><span class="material-symbols-outlined text-body-lg">smart_toy</span><span class="font-body-md text-body-md">AI Assistant</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="risk-and-settings" href="#"><span class="material-symbols-outlined text-body-lg">shield</span><span class="font-body-md text-body-md">Risk &amp; Settings</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="help" href="#"><span class="material-symbols-outlined text-body-lg">help</span><span class="font-body-md text-body-md">Help</span></a></nav></div><div class="px-space-md flex flex-col gap-space-xs"><div class="bg-slate-50 border border-slate-200 p-space-sm rounded-lg flex items-center justify-between"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-slate-400 uppercase font-semibold">Latency</span><span class="font-tabular-sm text-tabular-sm text-slate-900 font-medium">14.2 ms</span></div><div class="flex flex-col items-end"><span class="font-label-sm text-label-sm text-slate-400 uppercase font-semibold">Slippage</span><span class="font-tabular-sm text-tabular-sm text-slate-900 font-medium">0.02 pip</span></div></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-white/90 backdrop-blur-xl border-b border-slate-200 z-40 px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex flex-col"><div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm text-slate-900 tracking-tight font-semibold">Backtest Results</span><span class="px-2 py-0.5 rounded text-[11px] font-label-sm font-semibold bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wide">RUN #BT-4092</span></div><span class="font-body-sm text-body-sm text-slate-500">Historical execution simulation with institutional tick-data modeling and latency friction</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-slate-100 border border-slate-200"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span></span><span class="font-tabular-sm text-tabular-sm text-slate-800 font-medium">Engine online</span><span class="font-label-sm text-label-sm text-slate-400">• 2s ago</span></div><button class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition-colors shadow-xs" id="theme-toggle-btn" title="Switch to dark theme" type="button"><span class="material-symbols-outlined text-body-lg">dark_mode</span></button><button class="px-space-md py-space-xs rounded-lg bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-600 hover:text-white transition-colors flex items-center gap-space-xs font-label-md text-label-md uppercase tracking-wider font-semibold shadow-xs" type="button"><span class="material-symbols-outlined text-body-md">emergency</span><span>Kill Switch</span></button><div class="relative flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDDmrn61MjJkTPH4SPQpG39G3hngLE-0c-S5am75zO69fwU1KWEWR9q8mtsJ08k7MiO7RTTTU0Y-P3cb-2QbyiDM4lGXfV2T5JIQiilCGXDI_r7wWUVoVT-AUMgT1PPeY_EgCxKe1M_HcnR8FZG4ZdooANMcAuGhaxDeRI2EMIQJXtsFFUrfueRMMiMXHV8H2CMWr30EVuKxtTBW8G6Ge0dnxWn_p7xyuK4Rs1i3kavaERUwd6WgKxFg"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full ring-2 ring-white"></span></div></div></header><main class="relative pt-16 bg-[#f8fafc] min-h-screen w-full px-space-lg py-space-lg"><div class="flex flex-col w-full"><style>
+    :root {
+      --canvas-bg: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --accent-blue: #2563eb;
+      --profit-green: #16a34a;
+      --profit-green-bg: rgba(22, 163, 74, 0.1);
+      --loss-red: #dc2626;
+      --loss-red-bg: rgba(220, 38, 38, 0.1);
+    }
+    .theme-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: 'tnum' 1;
+    }
+  </style>
+<div class="flex flex-col gap-space-lg w-full max-w-7xl mx-auto pb-12">
+<!-- BREADCRUMB / TOP ACTION BAR -->
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-label-sm text-slate-400">
+<span class="hover:text-slate-700 transition-colors cursor-pointer">Strategies</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="hover:text-slate-700 transition-colors cursor-pointer">EMA ATR Trend v2</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-blue-600 font-medium">Backtest Simulation #BT-4092</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-50 text-slate-700 transition-colors border border-slate-200 font-label-md text-xs shadow-sm font-medium" type="button">
+<span class="material-symbols-outlined text-[16px] text-slate-500">file_download</span>
+          Export Data
+        </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 transition-colors font-label-md text-xs shadow-sm font-medium" type="button">
+<span class="material-symbols-outlined text-[16px]">compare_arrows</span>
+          Compare with another backtest
+        </button>
+</div>
+</div>
+<!-- AT A GLANCE BANNER -->
+<section class="theme-card rounded-xl px-space-lg py-space-md flex flex-col gap-space-sm shadow-sm bg-white border border-slate-200">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-blue-50 text-blue-600 border border-blue-100">
+<span class="material-symbols-outlined text-[20px]">history_edu</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-sm uppercase tracking-wider text-slate-400 font-semibold">Simulation Summary</span>
+<span class="w-1 h-1 rounded-full bg-slate-300"></span>
+<span class="font-label-sm text-slate-500 font-medium">High-Fidelity Tick Engine</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-slate-900 font-medium">
+              At a glance: Backtest simulation completed across 5 years of tick data. Net expectancy is positive with controlled tail risk. In-sample and out-of-sample curves show steady progression.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-label-md font-label-md bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-xs font-semibold">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+</span>
+            Verdict: Looks steady
+          </div>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2 border-t border-slate-100 text-body-sm text-slate-600">
+<span class="material-symbols-outlined text-blue-600 text-[18px] shrink-0">lightbulb</span>
+<span><strong class="text-slate-900 font-semibold">What this means:</strong> Strategy maintains positive edge even with modeled broker commission, slippage, and spread widened during rollover.</span>
+</div>
+</section>
+<!-- RUN RECAP BANNER -->
+<section class="theme-card rounded-xl p-space-md flex flex-col gap-3 shadow-sm bg-slate-50/70 border border-slate-200">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-4 text-body-sm text-slate-800">
+<div class="flex items-center gap-1.5">
+<span class="text-slate-400 font-label-sm uppercase font-semibold">Strategy:</span>
+<span class="font-semibold text-blue-600">EMA ATR Trend v2 (AI Draft)</span>
+</div>
+<span class="text-slate-300">•</span>
+<div class="flex items-center gap-1.5">
+<span class="text-slate-400 font-label-sm uppercase font-semibold">Instrument:</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200">XAUUSD</span>
+</div>
+<span class="text-slate-300">•</span>
+<div class="flex items-center gap-1.5">
+<span class="text-slate-400 font-label-sm uppercase font-semibold">Timeframe:</span>
+<span class="font-semibold text-slate-900">H1</span>
+</div>
+<span class="text-slate-300">•</span>
+<div class="flex items-center gap-1.5">
+<span class="text-slate-400 font-label-sm uppercase font-semibold">Date Range:</span>
+<span class="font-medium text-slate-800">Jan 2019 – Dec 2023 (5 Years)</span>
+</div>
+</div>
+<span class="font-label-sm text-slate-400 uppercase tracking-wider font-semibold">Realistic Frictions Modeled</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-200/60 font-label-sm text-xs text-slate-600">
+<span class="text-slate-400 font-semibold">Cost Inclusions:</span>
+<span class="px-2.5 py-0.5 rounded-full bg-white border border-slate-200 text-slate-700 shadow-xs">Spread (1.8 pips avg)</span>
+<span class="px-2.5 py-0.5 rounded-full bg-white border border-slate-200 text-slate-700 shadow-xs">Commission ($3.50/lot)</span>
+<span class="px-2.5 py-0.5 rounded-full bg-white border border-slate-200 text-slate-700 shadow-xs">Slippage (0.02 pip buffer)</span>
+<span class="px-2.5 py-0.5 rounded-full bg-white border border-slate-200 text-slate-700 shadow-xs">Swap (Overnight rollover applied)</span>
+</div>
+</section>
+<!-- FOUR CORE METRIC CARDS -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md relative">
+<!-- Card 1: Total Return (with open tooltip) -->
+<div class="theme-card rounded-xl p-space-md flex flex-col justify-between gap-space-md shadow-sm bg-white border border-slate-200 relative overflow-visible">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 relative">
+<span class="font-label-sm uppercase tracking-wider text-slate-400 font-semibold">Total Return</span>
+<button aria-label="Total return tooltip" class="text-blue-600 inline-flex items-center hover:text-blue-700" type="button">
+<span class="material-symbols-outlined text-[16px]">info</span>
+</button>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-sm font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">+18.4% ▲</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-tabular-lg text-[28px] leading-8 font-bold text-emerald-600 tabular-nums tracking-tight">+18.4% ▲</span>
+<p class="font-body-sm text-body-sm text-slate-500">Simulated net profit after full deduction of spreads and rollover costs.</p>
+</div>
+<div class="pt-2 border-t border-slate-100 flex items-center justify-between font-label-sm text-slate-400">
+<span class="font-medium">Net P&amp;L</span>
+<span class="tabular-nums text-emerald-600 font-bold font-tabular-sm">+$1,842.10 ▲</span>
+</div>
+<!-- OPEN TOOLTIP ON CARD 1 -->
+<div class="absolute -top-16 left-6 z-30 max-w-xs px-3.5 py-2.5 rounded-lg bg-slate-900 text-white shadow-xl text-body-sm border border-slate-800 animate-fade-in pointer-events-none">
+<p class="text-[12px] leading-snug">Total Return: The net percentage increase in account equity over the entire 5-year historical test period.</p>
+<div class="absolute -bottom-1.5 left-6 w-3 h-3 bg-slate-900 border-r border-b border-slate-800 rotate-45 transform"></div>
+</div>
+</div>
+<!-- Card 2: Max Drawdown -->
+<div class="theme-card rounded-xl p-space-md flex flex-col justify-between gap-space-md shadow-sm bg-white border border-slate-200">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm uppercase tracking-wider text-slate-400 font-semibold">Max Drawdown</span>
+<span class="material-symbols-outlined text-slate-400 text-[16px]">info</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-sm font-semibold bg-rose-50 text-rose-700 border border-rose-200">-6.2% ▼</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-tabular-lg text-[28px] leading-8 font-bold text-rose-600 tabular-nums tracking-tight">-6.2% ▼</span>
+<p class="font-body-sm text-body-sm text-slate-500">Deepest peak-to-trough decline across 5 years (well inside 10% safety cap).</p>
+</div>
+<div class="pt-2 border-t border-slate-100 flex items-center justify-between font-label-sm text-slate-400">
+<span class="font-medium">Dollar Dip</span>
+<span class="tabular-nums text-rose-600 font-bold font-tabular-sm">-$648.20 ▼</span>
+</div>
+</div>
+<!-- Card 3: Win Rate -->
+<div class="theme-card rounded-xl p-space-md flex flex-col justify-between gap-space-md shadow-sm bg-white border border-slate-200">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm uppercase tracking-wider text-slate-400 font-semibold">Win Rate</span>
+<span class="material-symbols-outlined text-slate-400 text-[16px]">info</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-sm font-semibold bg-slate-100 text-slate-700 border border-slate-200 tabular-nums">34W / 40L</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-tabular-lg text-[28px] leading-8 font-bold text-slate-900 tabular-nums tracking-tight">46.0%</span>
+<p class="font-body-sm text-body-sm text-slate-500">34 wins / 40 losses; positive due to strong 1.82 reward-to-risk ratio.</p>
+</div>
+<div class="pt-2 border-t border-slate-100 flex items-center justify-between font-label-sm text-slate-400">
+<span class="font-medium">Reward/Risk</span>
+<span class="tabular-nums text-slate-900 font-semibold font-tabular-sm">1:1.82 R:R</span>
+</div>
+</div>
+<!-- Card 4: Number of Trades -->
+<div class="theme-card rounded-xl p-space-md flex flex-col justify-between gap-space-md shadow-sm bg-white border border-slate-200">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm uppercase tracking-wider text-slate-400 font-semibold">Number of Trades</span>
+<span class="material-symbols-outlined text-slate-400 text-[16px]">info</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-sm font-semibold bg-blue-50 text-blue-700 border border-blue-200">Low Frequency</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-tabular-lg text-[28px] leading-8 font-bold text-slate-900 tabular-nums tracking-tight">74 Executions</span>
+<p class="font-body-sm text-body-sm text-slate-500">Low frequency, high-conviction macro trend entries averaging 3.8 days hold time.</p>
+</div>
+<div class="pt-2 border-t border-slate-100 flex items-center justify-between font-label-sm text-slate-400">
+<span class="font-medium">Avg Trade Duration</span>
+<span class="tabular-nums text-slate-900 font-semibold font-tabular-sm">3.8 Days</span>
+</div>
+</div>
+</section>
+<!-- CHARTS SECTION: EQUITY CURVE + UNDERWATER DRAWDOWN -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Equity Curve Card (8 cols) -->
+<section class="lg:col-span-8 theme-card rounded-xl p-space-lg flex flex-col gap-space-md shadow-sm bg-white border border-slate-200">
+<div class="flex flex-wrap items-center justify-between gap-space-md pb-space-sm border-b border-slate-100">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-slate-900 font-bold tracking-tight">Simulated Equity Curve (Tick Model)</h2>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-sm font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 tabular-nums">+$1,842.10 ▲ (+18.4%)</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">Progression from $10,000 initial capital to $11,842.10 through historical market dynamics</p>
+</div>
+<div class="flex items-center gap-3 text-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-1 bg-emerald-600 rounded-full"></span>
+<span class="text-slate-600 font-medium">In-Sample (Train: 2019–2022)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-1 bg-blue-600 rounded-full"></span>
+<span class="text-blue-600 font-semibold">Out-of-Sample (Unseen: 2023)</span>
+</div>
+</div>
+</div>
+<!-- High Fidelity SVG Dual-Phase Equity Curve (Light Mode Palette) -->
+<div class="w-full relative pt-2">
+<svg class="w-full h-64 sm:h-72 overflow-visible select-none" preserveaspectratio="none" viewbox="0 0 1000 300">
+<defs>
+<lineargradient id="inSampleGradLight" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#16a34a" stop-opacity="0.18"></stop>
+<stop offset="100%" stop-color="#16a34a" stop-opacity="0.01"></stop>
+</lineargradient>
+<lineargradient id="outSampleGradLight" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#2563eb" stop-opacity="0.22"></stop>
+<stop offset="100%" stop-color="#2563eb" stop-opacity="0.01"></stop>
+</lineargradient>
+</defs>
+<!-- Out-of-sample shaded background (last 20%) -->
+<rect fill="#2563eb" fill-opacity="0.04" height="260" width="200" x="800" y="0"></rect>
+<!-- Horizontal Grid lines -->
+<line stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="1000" y1="60" y2="60"></line>
+<line stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="1000" y1="120" y2="120"></line>
+<line stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="1000" y1="180" y2="180"></line>
+<line stroke="#cbd5e1" stroke-width="1.2" x1="0" x2="1000" y1="240" y2="240"></line>
+<text class="fill-slate-400 font-tabular-sm text-[10px] font-medium" x="10" y="234">Initial $10,000</text>
+<text class="fill-slate-400 font-tabular-sm text-[10px] font-medium" x="10" y="54">$11,840</text>
+<!-- In-Sample Area & Line (0 to 800) -->
+<polygon fill="url(#inSampleGradLight)" points="0,240 100,230 200,210 280,225 380,180 480,165 560,185 640,135 720,120 800,105 800,260 0,260"></polygon>
+<polyline fill="none" points="0,240 100,230 200,210 280,225 380,180 480,165 560,185 640,135 720,120 800,105" stroke="#16a34a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></polyline>
+<!-- Boundary Line (Day boundary 2022/2023) -->
+<line stroke="#2563eb" stroke-dasharray="4,3" stroke-width="1.5" x1="800" x2="800" y1="10" y2="260"></line>
+<rect fill="#ffffff" height="22" rx="4" stroke="#2563eb" stroke-width="1" width="165" x="715" y="22"></rect>
+<text class="fill-blue-700 font-label-sm text-[10px] font-semibold" x="723" y="37">Out-of-Sample (Unseen Data)</text>
+<!-- Out-of-Sample Area & Line (800 to 1000) -->
+<polygon fill="url(#outSampleGradLight)" points="800,105 860,90 920,70 1000,50 1000,260 800,260"></polygon>
+<polyline fill="none" points="800,105 860,90 920,70 1000,50" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></polyline>
+<!-- Terminal Profit Marker -->
+<g transform="translate(1000, 50)">
+<circle fill="#2563eb" r="5" stroke="#ffffff" stroke-width="2"></circle>
+<circle class="animate-ping opacity-30" fill="#2563eb" r="8"></circle>
+</g>
+</svg>
+<!-- Time Year Axes -->
+<div class="flex justify-between items-center text-slate-400 font-tabular-sm text-[11px] pt-1 border-t border-slate-100 tabular-nums">
+<span>2019</span>
+<span>2020</span>
+<span>2021</span>
+<span>2022</span>
+<span class="text-blue-600 font-semibold">2023 (Out-of-Sample)</span>
+<span class="text-emerald-600 font-bold tabular-nums">$11,842.10 ▲</span>
+</div>
+</div>
+</section>
+<!-- Underwater Drawdown Chart Card (4 cols) -->
+<section class="lg:col-span-4 theme-card rounded-xl p-space-lg flex flex-col justify-between gap-space-md shadow-sm bg-white border border-slate-200">
+<div class="flex flex-col pb-space-sm border-b border-slate-100">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-slate-900 font-bold tracking-tight">Underwater Drawdown</h2>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-sm font-semibold bg-rose-50 text-rose-700 border border-rose-200 tabular-nums">Max -6.2% ▼</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-500">Percentage drop below prior equity peaks across timeline</p>
+</div>
+<!-- SVG Drawdown in Light Mode -->
+<div class="w-full relative pt-2">
+<svg class="w-full h-44 overflow-visible select-none" preserveaspectratio="none" viewbox="0 0 400 160">
+<defs>
+<lineargradient id="ddGradLight" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#dc2626" stop-opacity="0.05"></stop>
+<stop offset="100%" stop-color="#dc2626" stop-opacity="0.25"></stop>
+</lineargradient>
+</defs>
+<!-- Baseline at 0% DD -->
+<line stroke="#94a3b8" stroke-width="1.2" x1="0" x2="400" y1="20" y2="20"></line>
+<text class="fill-slate-400 font-tabular-sm text-[10px] font-medium" x="10" y="16">0.0% —</text>
+<!-- Max DD benchmark threshold -->
+<line stroke="#dc2626" stroke-dasharray="3,3" stroke-width="1.2" x1="0" x2="400" y1="140" y2="140"></line>
+<text class="fill-rose-600 font-tabular-sm text-[10px] font-semibold" x="290" y="134">Safety Cap -10.0% ▼</text>
+<!-- Drawdown dips polygon -->
+<polygon fill="url(#ddGradLight)" points="0,20 40,20 60,60 80,20 120,75 150,20 200,105 240,20 280,45 320,20 360,50 400,20"></polygon>
+<polyline fill="none" points="0,20 40,20 60,60 80,20 120,75 150,20 200,105 240,20 280,45 320,20 360,50 400,20" stroke="#dc2626" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline>
+<!-- Max Drawdown Point Marker -->
+<g transform="translate(200, 105)">
+<circle fill="#dc2626" r="4" stroke="#ffffff" stroke-width="1.5"></circle>
+<text class="fill-rose-600 font-tabular-sm text-[10px] font-bold" x="-18" y="18">-6.2% ▼</text>
+</g>
+</svg>
+<div class="flex justify-between items-center text-slate-400 font-tabular-sm text-[11px] pt-1 border-t border-slate-100 tabular-nums">
+<span>2019</span>
+<span>2021</span>
+<span>2023</span>
+<span class="text-emerald-600 font-semibold">Recovered</span>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 text-body-sm text-slate-600 flex items-center justify-between">
+<span class="text-xs text-slate-400 font-medium">Longest Drawdown Duration:</span>
+<span class="text-xs font-semibold text-slate-900 tabular-nums">42 Days (Q3 2021)</span>
+</div>
+</section>
+</div>
+<!-- ADVANCED METRICS SECTION -->
+<section class="theme-card rounded-xl p-space-lg flex flex-col gap-space-md shadow-sm bg-white border border-slate-200">
+<div class="flex flex-wrap items-center justify-between gap-space-md pb-space-sm border-b border-slate-100">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-slate-900 font-bold tracking-tight">Advanced Quantitative Metrics</h2>
+<p class="font-body-sm text-body-sm text-slate-500">Risk-adjusted ratios and monthly return distribution</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-slate-400 uppercase font-semibold">View:</span>
+<span class="px-2.5 py-1 rounded-md text-xs font-label-md bg-blue-600 text-white font-medium flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">expand_less</span>
+            Advanced Metrics Expanded
+          </span>
+</div>
+</div>
+<!-- Metric Pills / Stats Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-200 flex flex-col gap-1">
+<span class="font-label-sm text-slate-400 uppercase text-[11px] font-semibold">Sharpe Ratio</span>
+<span class="font-tabular-lg text-lg font-bold text-slate-900 tabular-nums">1.88</span>
+<span class="font-label-sm text-[10px] text-emerald-700 font-medium">Institutional grade</span>
+</div>
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-200 flex flex-col gap-1">
+<span class="font-label-sm text-slate-400 uppercase text-[11px] font-semibold">Sortino Ratio</span>
+<span class="font-tabular-lg text-lg font-bold text-slate-900 tabular-nums">2.41</span>
+<span class="font-label-sm text-[10px] text-emerald-700 font-medium">Minimal downside var</span>
+</div>
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-200 flex flex-col gap-1">
+<span class="font-label-sm text-slate-400 uppercase text-[11px] font-semibold">Profit Factor</span>
+<span class="font-tabular-lg text-lg font-bold text-slate-900 tabular-nums">1.76</span>
+<span class="font-label-sm text-[10px] text-slate-500 font-medium">Gross W / Gross L</span>
+</div>
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-200 flex flex-col gap-1">
+<span class="font-label-sm text-slate-400 uppercase text-[11px] font-semibold">Average Win</span>
+<span class="font-tabular-lg text-lg font-bold text-emerald-600 tabular-nums">+$124.50 ▲</span>
+<span class="font-label-sm text-[10px] text-slate-400">34 winning trades</span>
+</div>
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-200 flex flex-col gap-1">
+<span class="font-label-sm text-slate-400 uppercase text-[11px] font-semibold">Average Loss</span>
+<span class="font-tabular-lg text-lg font-bold text-rose-600 tabular-nums">-$68.40 ▼</span>
+<span class="font-label-sm text-[10px] text-slate-400">40 losing trades</span>
+</div>
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-200 flex flex-col gap-1">
+<span class="font-label-sm text-slate-400 uppercase text-[11px] font-semibold">Recovery Factor</span>
+<span class="font-tabular-lg text-lg font-bold text-slate-900 tabular-nums">2.97</span>
+<span class="font-label-sm text-[10px] text-emerald-700 font-medium">Fast bounce back</span>
+</div>
+</div>
+<!-- Monthly Returns Heatmap (Light Mode Palette) -->
+<div class="flex flex-col gap-2 pt-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm uppercase tracking-wider text-slate-400 font-semibold">Monthly Returns Heatmap (2019 – 2023)</span>
+<div class="flex items-center gap-3 text-[11px] font-label-sm">
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-emerald-100 border border-emerald-300"></span> <span class="text-slate-600">Positive Return</span></span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-rose-100 border border-rose-300"></span> <span class="text-slate-600">Drawdown</span></span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-slate-100 border border-slate-200"></span> <span class="text-slate-600">Flat / Neutral</span></span>
+</div>
+</div>
+<div class="overflow-x-auto -mx-space-md px-space-md">
+<table class="w-full text-center border-collapse text-xs font-tabular-sm tabular-nums">
+<thead>
+<tr class="text-slate-400 text-[11px] uppercase border-b border-slate-200">
+<th class="py-2.5 px-2 text-left font-semibold">Year</th>
+<th class="py-2.5 px-1 font-semibold">Jan</th>
+<th class="py-2.5 px-1 font-semibold">Feb</th>
+<th class="py-2.5 px-1 font-semibold">Mar</th>
+<th class="py-2.5 px-1 font-semibold">Apr</th>
+<th class="py-2.5 px-1 font-semibold">May</th>
+<th class="py-2.5 px-1 font-semibold">Jun</th>
+<th class="py-2.5 px-1 font-semibold">Jul</th>
+<th class="py-2.5 px-1 font-semibold">Aug</th>
+<th class="py-2.5 px-1 font-semibold">Sep</th>
+<th class="py-2.5 px-1 font-semibold">Oct</th>
+<th class="py-2.5 px-1 font-semibold">Nov</th>
+<th class="py-2.5 px-1 font-semibold">Dec</th>
+<th class="py-2.5 px-2 text-right font-semibold">YTD</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- 2019 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-2.5 px-2 text-left font-bold text-slate-900">2019</td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.8% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+2.4% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-0.8% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.9% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 font-medium">0.0% —</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.5% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-1.1% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+3.2% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-0.4% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.6% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.1% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.7% ▲</span></td>
+<td class="py-2.5 px-2 text-right font-bold text-emerald-600">+9.9% ▲</td>
+</tr>
+<!-- 2020 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-2.5 px-2 text-left font-bold text-slate-900">2020</td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+2.1% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-1.4% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+4.1% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.0% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-0.6% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 font-medium">0.0% —</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+2.8% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-1.2% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 font-medium">0.0% —</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.5% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.3% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.4% ▲</span></td>
+<td class="py-2.5 px-2 text-right font-bold text-emerald-600">+9.0% ▲</td>
+</tr>
+<!-- 2021 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-2.5 px-2 text-left font-bold text-slate-900">2021</td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-0.9% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.7% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 font-medium">0.0% —</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.4% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+2.0% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-2.1% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-1.8% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 font-medium">0.0% —</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.8% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.5% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-0.5% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.3% ▲</span></td>
+<td class="py-2.5 px-2 text-right font-bold text-emerald-600">+1.4% ▲</td>
+</tr>
+<!-- 2022 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-2.5 px-2 text-left font-bold text-slate-900">2022</td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.2% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.9% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-0.7% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.4% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 font-medium">0.0% —</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.8% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+2.2% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-0.3% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.6% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-1.2% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.1% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.9% ▲</span></td>
+<td class="py-2.5 px-2 text-right font-bold text-emerald-600">+7.9% ▲</td>
+</tr>
+<!-- 2023 (Out of sample) -->
+<tr class="hover:bg-blue-50/60 transition-colors bg-blue-50/30">
+<td class="py-2.5 px-2 text-left font-bold text-blue-700">2023*</td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.5% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-0.4% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.8% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.6% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-0.8% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.2% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 font-medium">0.0% —</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.9% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-semibold">-0.5% ▼</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+1.7% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.8% ▲</span></td>
+<td class="py-2.5 px-1"><span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">+0.6% ▲</span></td>
+<td class="py-2.5 px-2 text-right font-bold text-blue-700">+7.4% ▲</td>
+</tr>
+</tbody>
+</table>
+</div>
+<span class="text-[11px] text-slate-400 mt-1 font-medium">*2023 tested strictly as out-of-sample forward dataset.</span>
+</div>
+</section>
+<!-- AMBER CAUTION CARD -->
+<section class="rounded-xl p-space-md border border-amber-300 bg-amber-50/80 flex items-start gap-3 text-slate-900 shadow-sm">
+<div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-amber-100 border border-amber-200 text-amber-700 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<h3 class="font-headline-sm text-sm font-bold text-amber-900">Statistical Significance Notice</h3>
+<p class="font-body-sm text-xs text-amber-800 leading-snug">
+          Only 18 trades in the last period. Results from few trades can be luck. We recommend extending forward testing or Monte Carlo simulation before allocating live capital.
+        </p>
+</div>
+</section>
+<!-- BACKTEST TRADES BLOTTER (Trades List Table) -->
+<section class="theme-card rounded-xl p-space-md flex flex-col gap-space-md shadow-sm bg-white border border-slate-200">
+<div class="flex flex-wrap items-center justify-between gap-2 pb-space-sm border-b border-slate-100">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-slate-900 font-bold tracking-tight">Backtest Execution Blotter</h2>
+<p class="font-body-sm text-body-sm text-slate-500">Simulated institutional orders with exact entry, exit, duration, and tick-level slippage deduction</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-full text-xs font-label-md bg-slate-100 border border-slate-200 text-slate-700 font-medium">Showing 10 of 74 Trades</span>
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-label-md text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors border border-blue-200 font-medium" type="button">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+            Filter Trades
+          </button>
+</div>
+</div>
+<!-- Trades Table -->
+<div class="overflow-x-auto -mx-space-md px-space-md">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-slate-400 font-label-sm uppercase tracking-wider border-b border-slate-200 text-[11px] font-semibold bg-slate-50/70">
+<th class="py-2.5 px-3">Ticket / Date</th>
+<th class="py-2.5 px-3">Direction</th>
+<th class="py-2.5 px-3">Size</th>
+<th class="py-2.5 px-3">Entry</th>
+<th class="py-2.5 px-3">Exit</th>
+<th class="py-2.5 px-3">Duration</th>
+<th class="py-2.5 px-3 text-right">Points</th>
+<th class="py-2.5 px-3 text-right">Net P&amp;L</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-body-sm">
+<!-- Trade 1 (Profit) -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 text-xs font-tabular-sm tabular-nums">#BT-7401</span>
+<span class="font-label-sm text-slate-400 text-[11px]">2023-12-18 14:00</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">BUY</span>
+</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-600 font-medium">0.50 Lot</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">2,018.40</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">2,042.80</td>
+<td class="py-3 px-3 text-xs text-slate-500">3d 6h</td>
+<td class="py-3 px-3 text-right font-tabular-sm text-xs tabular-nums text-emerald-600 font-semibold">+244 pts</td>
+<td class="py-3 px-3 text-right font-tabular-sm font-bold text-emerald-600 tabular-nums text-xs">+$122.00 ▲</td>
+</tr>
+<!-- Trade 2 (Loss) -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 text-xs font-tabular-sm tabular-nums">#BT-7398</span>
+<span class="font-label-sm text-slate-400 text-[11px]">2023-12-10 09:00</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-200">SELL</span>
+</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-600 font-medium">0.50 Lot</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">2,034.10</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">2,044.50</td>
+<td class="py-3 px-3 text-xs text-slate-500">1d 12h</td>
+<td class="py-3 px-3 text-right font-tabular-sm text-xs tabular-nums text-rose-600 font-semibold">-104 pts</td>
+<td class="py-3 px-3 text-right font-tabular-sm font-bold text-rose-600 tabular-nums text-xs">-$52.00 ▼</td>
+</tr>
+<!-- Trade 3 (Profit) -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 text-xs font-tabular-sm tabular-nums">#BT-7395</span>
+<span class="font-label-sm text-slate-400 text-[11px]">2023-11-28 16:00</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">BUY</span>
+</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-600 font-medium">0.50 Lot</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">1,988.20</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">2,021.60</td>
+<td class="py-3 px-3 text-xs text-slate-500">4d 20h</td>
+<td class="py-3 px-3 text-right font-tabular-sm text-xs tabular-nums text-emerald-600 font-semibold">+334 pts</td>
+<td class="py-3 px-3 text-right font-tabular-sm font-bold text-emerald-600 tabular-nums text-xs">+$167.00 ▲</td>
+</tr>
+<!-- Trade 4 (Loss) -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 text-xs font-tabular-sm tabular-nums">#BT-7392</span>
+<span class="font-label-sm text-slate-400 text-[11px]">2023-11-14 08:00</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">BUY</span>
+</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-600 font-medium">0.50 Lot</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">1,964.50</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">1,951.10</td>
+<td class="py-3 px-3 text-xs text-slate-500">2d 4h</td>
+<td class="py-3 px-3 text-right font-tabular-sm text-xs tabular-nums text-rose-600 font-semibold">-134 pts</td>
+<td class="py-3 px-3 text-right font-tabular-sm font-bold text-rose-600 tabular-nums text-xs">-$67.00 ▼</td>
+</tr>
+<!-- Trade 5 (Profit) -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 text-xs font-tabular-sm tabular-nums">#BT-7389</span>
+<span class="font-label-sm text-slate-400 text-[11px]">2023-10-25 11:00</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">BUY</span>
+</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-600 font-medium">0.50 Lot</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">1,930.00</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">1,972.50</td>
+<td class="py-3 px-3 text-xs text-slate-500">5d 1h</td>
+<td class="py-3 px-3 text-right font-tabular-sm text-xs tabular-nums text-emerald-600 font-semibold">+425 pts</td>
+<td class="py-3 px-3 text-right font-tabular-sm font-bold text-emerald-600 tabular-nums text-xs">+$212.50 ▲</td>
+</tr>
+<!-- Trade 6 (Loss) -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 text-xs font-tabular-sm tabular-nums">#BT-7386</span>
+<span class="font-label-sm text-slate-400 text-[11px]">2023-10-09 13:00</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-200">SELL</span>
+</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-600 font-medium">0.50 Lot</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">1,880.20</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">1,894.60</td>
+<td class="py-3 px-3 text-xs text-slate-500">1d 8h</td>
+<td class="py-3 px-3 text-right font-tabular-sm text-xs tabular-nums text-rose-600 font-semibold">-144 pts</td>
+<td class="py-3 px-3 text-right font-tabular-sm font-bold text-rose-600 tabular-nums text-xs">-$72.00 ▼</td>
+</tr>
+<!-- Trade 7 (Profit) -->
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-slate-900 text-xs font-tabular-sm tabular-nums">#BT-7382</span>
+<span class="font-label-sm text-slate-400 text-[11px]">2023-09-18 07:00</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-200">SELL</span>
+</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-600 font-medium">0.50 Lot</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">1,922.80</td>
+<td class="py-3 px-3 font-tabular-sm text-xs tabular-nums text-slate-800 font-medium">1,898.40</td>
+<td class="py-3 px-3 text-xs text-slate-500">3d 18h</td>
+<td class="py-3 px-3 text-right font-tabular-sm text-xs tabular-nums text-emerald-600 font-semibold">+244 pts</td>
+<td class="py-3 px-3 text-right font-tabular-sm font-bold text-emerald-600 tabular-nums text-xs">+$122.00 ▲</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Action Pagination -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-sm border-t border-slate-100 font-label-sm text-xs text-slate-400">
+<div class="flex items-center gap-2">
+<span>Page 1 of 8</span>
+<span class="w-1 h-1 rounded-full bg-slate-300"></span>
+<span class="text-slate-600 font-medium">74 executions modeled without survivorship bias</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 rounded-lg bg-white text-slate-700 hover:bg-slate-50 transition-colors font-medium border border-slate-200 shadow-xs" type="button">Previous</button>
+<button class="px-3 py-1 rounded-lg bg-blue-600 text-white font-medium shadow-xs hover:bg-blue-700 transition-colors" type="button">Next</button>
+<button class="ml-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 transition-colors font-medium shadow-xs" type="button">
+<span class="material-symbols-outlined text-[15px]">compare_arrows</span>
+            Compare with another backtest
+          </button>
+</div>
+</div>
+</section>
+</div></div></main></div></body></html>

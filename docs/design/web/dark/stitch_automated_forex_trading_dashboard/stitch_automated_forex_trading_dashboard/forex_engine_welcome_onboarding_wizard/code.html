@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_blank" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-highest": "#2c3640",
+          "tertiary": "#ffb786",
+          "on-primary-fixed-variant": "#004395",
+          "on-primary": "#002e6a",
+          "on-error-container": "#ffdad6",
+          "outline-variant": "#424754",
+          "inverse-primary": "#005ac2",
+          "surface-container-lowest": "#050f18",
+          "surface-dim": "#0a141e",
+          "inverse-on-surface": "#27313c",
+          "tertiary-fixed": "#ffdcc6",
+          "on-error": "#690005",
+          "surface-bright": "#303a45",
+          "on-tertiary-fixed-variant": "#723600",
+          "on-secondary": "#2b313a",
+          "secondary-container": "#434954",
+          "secondary-fixed": "#dde2f0",
+          "on-secondary-fixed": "#161c25",
+          "surface-container-high": "#212b35",
+          "tertiary-container": "#df7412",
+          "on-secondary-fixed-variant": "#414751",
+          "error-container": "#93000a",
+          "surface-variant": "#2c3640",
+          "inverse-surface": "#d9e3f1",
+          "on-tertiary-fixed": "#311400",
+          "on-primary-fixed": "#001a42",
+          "on-primary-container": "#00285d",
+          "surface-container-low": "#121d26",
+          "on-surface": "#d9e3f1",
+          "primary": "#adc6ff",
+          "primary-fixed": "#d8e2ff",
+          "secondary": "#c1c7d3",
+          "on-secondary-container": "#b3b8c5",
+          "tertiary-fixed-dim": "#ffb786",
+          "surface-container": "#16212a",
+          "outline": "#8c909f",
+          "background": "#0a141e",
+          "primary-container": "#4d8eff",
+          "primary-fixed-dim": "#adc6ff",
+          "on-tertiary-container": "#461f00",
+          "secondary-fixed-dim": "#c1c7d3",
+          "error": "#ffb4ab",
+          "on-tertiary": "#502400",
+          "surface-tint": "#adc6ff",
+          "surface": "#0a141e",
+          "on-background": "#d9e3f1",
+          "on-surface-variant": "#c2c6d6"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "margin": "1.5rem",
+          "space-lg": "1.5rem",
+          "space-md": "1rem",
+          "margin-mobile": "1rem",
+          "space-xs": "0.25rem",
+          "space-sm": "0.5rem",
+          "gutter-compact": "0.5rem",
+          "space-xl": "2rem",
+          "gutter": "1rem"
+        },
+        "fontFamily": {
+          "headline-sm": [
+            "Inter"
+          ],
+          "display-lg": [
+            "Inter"
+          ],
+          "label-sm": [
+            "Inter"
+          ],
+          "body-lg": [
+            "Inter"
+          ],
+          "tabular-lg": [
+            "JetBrains Mono"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "label-md": [
+            "Inter"
+          ],
+          "tabular-sm": [
+            "JetBrains Mono"
+          ],
+          "body-sm": [
+            "Inter"
+          ],
+          "tabular-md": [
+            "JetBrains Mono"
+          ],
+          "headline-lg": [
+            "Inter"
+          ]
+        },
+        "fontSize": {
+          "headline-sm": [
+            "18px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "tabular-lg": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "500"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-md": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.02em",
+              "fontWeight": "500"
+            }
+          ],
+          "tabular-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "tabular-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><main class="w-full min-h-screen bg-background flex items-center justify-center p-margin"><div class="flex flex-col w-full text-on-surface">
+<!-- Internal Global App Header / Status Bar -->
+<header class="w-full bg-surface-container-lowest px-6 py-3.5 flex flex-wrap items-center justify-between gap-4">
+<!-- Brand / Product Identity -->
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-surface-container-lowest text-xl">candlestick_chart</span>
+</div>
+<div>
+<div class="flex items-center space-x-2">
+<span class="font-headline-sm text-headline-sm tracking-tight text-on-surface font-semibold">AuraFX</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-tabular-sm text-tabular-sm">ENGINE v4.2</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider block">Institutional Automation</span>
+</div>
+</div>
+<!-- Telemetry Status & System Indicators -->
+<div class="flex items-center space-x-4">
+<!-- Engine Status Pill -->
+<div class="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-surface-container-low">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Engine Status:</span>
+<span class="font-label-md text-label-md text-primary font-semibold">Sandbox Ready</span>
+</div>
+<!-- Emergency Circuit Breaker Indicator -->
+<div class="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-surface-container-high">
+<span class="material-symbols-outlined text-error text-base">power_settings_new</span>
+<span class="font-label-sm text-label-sm text-error uppercase font-semibold tracking-wider">Kill Switch Armed</span>
+</div>
+<!-- Theme Mode Toggle -->
+<button aria-label="Toggle theme appearance" class="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-lg block">dark_mode</span>
+</button>
+</div>
+</header>
+<!-- Main Scrollable Flow Container -->
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+<!-- Hero / Welcome Banner Section -->
+<section class="relative rounded-2xl bg-gradient-to-r from-surface-container-low via-surface-container to-surface-container-low p-8 shadow-xl overflow-hidden">
+<!-- Ambient Lighting Blur -->
+<div class="absolute -top-24 -left-24 w-72 h-72 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-72 h-72 bg-tertiary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 max-w-3xl space-y-3">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm tracking-widest uppercase">
+<span class="material-symbols-outlined text-xs">rocket_launch</span>
+          System Onboarding &amp; Setup V4.2
+        </div>
+<h1 class="font-display-lg text-display-lg text-on-surface font-semibold tracking-tight">
+          Welcome to AuraFX Automated Engine
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+          Configure your first algorithmic trading profile in 4 guided steps. All new configurations initiate strictly in a calibrated, risk-free Paper Trading simulation sandbox.
+        </p>
+</div>
+</section>
+<!-- Three High-Impact Core Architecture Cards -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<!-- Card 1: Systematic Automation -->
+<div class="bg-surface-container p-6 rounded-xl flex flex-col justify-between space-y-4 hover:bg-surface-container-high transition-colors">
+<div class="space-y-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">precision_manufacturing</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Your strategy trades automatically</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Continuous 24/5 millisecond market monitoring and programmatic order execution according to mathematical rules without emotional bias.
+          </p>
+</div>
+<div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-highest text-primary font-tabular-sm text-tabular-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            24/5 Automated Execution
+          </span>
+</div>
+</div>
+<!-- Card 2: Risk-Free Simulation Sandbox -->
+<div class="bg-surface-container p-6 rounded-xl flex flex-col justify-between space-y-4 hover:bg-surface-container-high transition-colors">
+<div class="space-y-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest text-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">verified_user</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Test before using real money</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Every strategy undergoes rigorous historical backtesting and mandatory 30-day forward paper simulation before live broker capital can be unlocked.
+          </p>
+</div>
+<div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-highest text-secondary-fixed font-tabular-sm text-tabular-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+            100% Risk-Free Simulation
+          </span>
+</div>
+</div>
+<!-- Card 3: Emergency Circuit Breaker -->
+<div class="bg-surface-container p-6 rounded-xl flex flex-col justify-between space-y-4 hover:bg-surface-container-high transition-colors">
+<div class="space-y-3">
+<div class="w-10 h-10 rounded-lg bg-error-container/20 text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">gavel</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Stop everything anytime with Kill Switch</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Instant one-click master circuit breaker that sweeps all open orders and severs broker connections in under 18ms should market anomalies occur.
+          </p>
+</div>
+<div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-highest text-error font-tabular-sm text-tabular-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+            &lt; 18ms Latency Disconnect
+          </span>
+</div>
+</div>
+</section>
+<!-- 4-Step Interactive Setup Wizard Workstation -->
+<section class="bg-surface-container-low rounded-2xl p-6 lg:p-8 space-y-8 shadow-2xl">
+<!-- Stepper Header, Progress Bar & Contextual Education Tooltip -->
+<div class="space-y-4">
+<!-- Top bar with progress text, Back navigation and Tooltip Trigger -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center space-x-3">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span>Back</span>
+</button>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+              Step 2 of 4: Select Trading Asset
+            </span>
+</div>
+<!-- Educational Help Indicator with OPEN Tooltip Box -->
+<div class="relative group">
+<div class="inline-flex items-center space-x-1.5 text-primary cursor-pointer hover:underline">
+<span class="material-symbols-outlined text-sm">help_outline</span>
+<span class="font-label-md text-label-md font-medium">Why am I asked this?</span>
+</div>
+<!-- Visible Explanatory Tooltip -->
+<div class="mt-2 w-80 md:w-96 p-4 rounded-xl bg-surface-container-high shadow-2xl border border-outline-variant/30 space-y-2">
+<div class="flex items-center space-x-1.5 text-primary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-base">info</span>
+<span>Instrument Liquidity &amp; Microstructure</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Forex pairs and precious metals exhibit distinct liquidity hours, volatility spreads, and margin profiles. Selecting an instrument allows AuraFX to calibrate ATR multipliers, slippage filters, and news embargo windows to the specific asset's microstructure.
+              </p>
+</div>
+</div>
+</div>
+<!-- 4-Phase Stepper Tracker -->
+<div class="grid grid-cols-4 gap-2 pt-2">
+<!-- Step 1 Complete -->
+<div class="space-y-1.5">
+<div class="h-1.5 rounded-full bg-primary"></div>
+<div class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-xs text-primary font-bold">check_circle</span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold">1. Account</span>
+</div>
+</div>
+<!-- Step 2 Active -->
+<div class="space-y-1.5">
+<div class="h-1.5 rounded-full bg-primary"></div>
+<div class="flex items-center space-x-1">
+<span class="w-3 h-3 rounded-full bg-primary text-surface-container-lowest font-tabular-sm text-[9px] flex items-center justify-center font-bold">2</span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider font-semibold">2. Asset</span>
+</div>
+</div>
+<!-- Step 3 Pending -->
+<div class="space-y-1.5">
+<div class="h-1.5 rounded-full bg-surface-container-highest"></div>
+<div class="flex items-center space-x-1">
+<span class="w-3 h-3 rounded-full bg-surface-container-highest text-outline font-tabular-sm text-[9px] flex items-center justify-center font-bold">3</span>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">3. Strategy</span>
+</div>
+</div>
+<!-- Step 4 Pending -->
+<div class="space-y-1.5">
+<div class="h-1.5 rounded-full bg-surface-container-highest"></div>
+<div class="flex items-center space-x-1">
+<span class="w-3 h-3 rounded-full bg-surface-container-highest text-outline font-tabular-sm text-[9px] flex items-center justify-center font-bold">4</span>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">4. Deploy</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 1 Summary Strip: Connected Account -->
+<div class="p-4 rounded-xl bg-surface-container flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-base">account_balance_wallet</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider block">Completed Step 1</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">MetaTrader 5 Demo (#8849201 · $10,000 Paper Balance)</span>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container-highest text-primary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-sm">verified</span> Verified &amp; Connected
+          </span>
+<button class="p-1.5 rounded text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Change Broker Connection" type="button">
+<span class="material-symbols-outlined text-base">edit</span>
+</button>
+</div>
+</div>
+<!-- Step 2 Active Section: Choose an Instrument -->
+<div class="space-y-4">
+<div>
+<div class="flex items-center space-x-2">
+<h3 class="font-headline-lg text-headline-lg text-on-surface font-semibold">Step 2: Choose an Instrument</h3>
+<span class="px-2 py-0.5 rounded text-primary bg-surface-container-highest font-label-sm text-label-sm font-semibold uppercase">Active Step</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Select the primary currency pair or commodity for your first automated profile.</p>
+</div>
+<!-- 3 Rich Instrument Cards (Radio Group Simulation) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="instrument-selector">
+<!-- Card A: XAUUSD (Selected) -->
+<div class="relative p-5 rounded-xl bg-surface-container-high ring-2 ring-primary transition-all cursor-pointer flex flex-col justify-between space-y-4">
+<div class="space-y-3">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-headline-lg text-headline-lg font-tabular-lg font-bold text-on-surface">XAUUSD</span>
+<span class="block font-label-md text-label-md text-primary font-medium">Gold / US Dollar</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-surface-container-lowest"></span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                High-volatility precious metal offering prominent intraday breakout swings and tight New York session spreads.
+              </p>
+</div>
+<div class="space-y-2 pt-2">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-highest text-tertiary-fixed font-label-sm text-label-sm font-semibold">
+                Recommended for Trend Following
+              </span>
+<div class="flex items-center justify-between font-tabular-sm text-tabular-sm text-outline pt-1">
+<span>Spread: <strong class="text-on-surface font-semibold">1.6 pips avg</strong></span>
+<span>Volatility: <strong class="text-primary font-semibold">High</strong></span>
+</div>
+</div>
+</div>
+<!-- Card B: EURUSD -->
+<div class="relative p-5 rounded-xl bg-surface-container hover:bg-surface-container-high transition-all cursor-pointer flex flex-col justify-between space-y-4">
+<div class="space-y-3">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-headline-lg text-headline-lg font-tabular-lg font-bold text-on-surface">EURUSD</span>
+<span class="block font-label-md text-label-md text-outline font-medium">Euro / US Dollar</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Highest global liquidity pair with ultralow institutional spread friction and predictable London trend continuation.
+              </p>
+</div>
+<div class="space-y-2 pt-2">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-semibold">
+                Ultra-low Spread
+              </span>
+<div class="flex items-center justify-between font-tabular-sm text-tabular-sm text-outline pt-1">
+<span>Spread: <strong class="text-on-surface font-semibold">0.8 pips avg</strong></span>
+<span>Volatility: <strong class="text-on-surface font-semibold">Medium</strong></span>
+</div>
+</div>
+</div>
+<!-- Card C: USDJPY -->
+<div class="relative p-5 rounded-xl bg-surface-container hover:bg-surface-container-high transition-all cursor-pointer flex flex-col justify-between space-y-4">
+<div class="space-y-3">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-headline-lg text-headline-lg font-tabular-lg font-bold text-on-surface">USDJPY</span>
+<span class="block font-label-md text-label-md text-outline font-medium">US Dollar / Japanese Yen</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Macro interest rate divergence pair with clean Asian and London session directional momentum.
+              </p>
+</div>
+<div class="space-y-2 pt-2">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-semibold">
+                Momentum Friendly
+              </span>
+<div class="flex items-center justify-between font-tabular-sm text-tabular-sm text-outline pt-1">
+<span>Spread: <strong class="text-on-surface font-semibold">1.1 pips avg</strong></span>
+<span>Volatility: <strong class="text-on-surface font-semibold">Medium-High</strong></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 3 Preview & Configuration: Strategy Presets -->
+<div class="space-y-4">
+<div>
+<div class="flex items-center space-x-2">
+<h3 class="font-headline-lg text-headline-lg text-on-surface font-semibold">Step 3: Select Automated Strategy</h3>
+<span class="px-2 py-0.5 rounded text-outline bg-surface-container-highest font-label-sm text-label-sm font-semibold uppercase">Configured</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Choose the algorithmic logic that dictates entry triggers, stop loss boundaries, and profit targets.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="strategy-selector">
+<!-- Strategy 1 (Selected) -->
+<div class="p-5 rounded-xl bg-surface-container-high ring-2 ring-primary transition-all cursor-pointer space-y-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-xl">trending_up</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Trend Following</span>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+</div>
+<div class="font-label-sm text-label-sm text-primary font-mono">EMA ATR Trend v2</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Trades in the direction of the market's momentum, entering when fast moving averages confirm strong continuation and trailing risk behind price.
+            </p>
+<div class="pt-2 font-tabular-sm text-tabular-sm text-on-surface space-y-1 bg-surface-container-lowest/60 p-2.5 rounded-lg">
+<div class="flex justify-between">
+<span class="text-outline">Win Rate:</span>
+<span class="text-primary font-semibold">64.2%</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Max Drawdown:</span>
+<span class="text-tertiary font-semibold">-3.80%</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Timeframe:</span>
+<span class="font-semibold text-on-surface">H1 (1 Hour)</span>
+</div>
+</div>
+</div>
+<!-- Strategy 2 -->
+<div class="p-5 rounded-xl bg-surface-container hover:bg-surface-container-high transition-all cursor-pointer space-y-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-outline text-xl">compare_arrows</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Mean Reversion</span>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest"></span>
+</div>
+<div class="font-label-sm text-label-sm text-outline font-mono">Bollinger RSI Bands</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Captures overextended price moves by fading temporary liquidity spikes and selling back to fair market value.
+            </p>
+<div class="pt-2 font-tabular-sm text-tabular-sm text-on-surface space-y-1 bg-surface-container-lowest/60 p-2.5 rounded-lg">
+<div class="flex justify-between">
+<span class="text-outline">Win Rate:</span>
+<span class="text-on-surface font-semibold">71.0%</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Max Drawdown:</span>
+<span class="text-tertiary font-semibold">-4.50%</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Timeframe:</span>
+<span class="font-semibold text-on-surface">M15 (15 Min)</span>
+</div>
+</div>
+</div>
+<!-- Strategy 3 -->
+<div class="p-5 rounded-xl bg-surface-container hover:bg-surface-container-high transition-all cursor-pointer space-y-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-outline text-xl">flash_on</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Breakout Momentum</span>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest"></span>
+</div>
+<div class="font-label-sm text-label-sm text-outline font-mono">London Open Range</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Captures explosive early session volatility expansions when key consolidation support or resistance breaks.
+            </p>
+<div class="pt-2 font-tabular-sm text-tabular-sm text-on-surface space-y-1 bg-surface-container-lowest/60 p-2.5 rounded-lg">
+<div class="flex justify-between">
+<span class="text-outline">Win Rate:</span>
+<span class="text-on-surface font-semibold">58.5%</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Max Drawdown:</span>
+<span class="text-tertiary font-semibold">-3.20%</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Timeframe:</span>
+<span class="font-semibold text-on-surface">M30 (30 Min)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 4 Review & Deploy Strip -->
+<div class="p-6 rounded-xl bg-surface-container-highest space-y-4">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-xl">fact_check</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Profile Configuration Summary</h4>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-3">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-outline uppercase">Active Asset</span>
+<div class="font-tabular-md text-tabular-md font-semibold text-on-surface">XAUUSD (Gold)</div>
+</div>
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-outline uppercase">Strategy Preset</span>
+<div class="font-tabular-md text-tabular-md font-semibold text-on-surface">Trend Following (H1)</div>
+</div>
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-outline uppercase">Target Account</span>
+<div class="font-tabular-md text-tabular-md font-semibold text-on-surface">MT5 Paper ($10,000.00)</div>
+</div>
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-outline uppercase">Risk Guard Limits</span>
+<div class="font-tabular-md text-tabular-md font-semibold text-primary">0.50% / trade ($50.00 max)</div>
+</div>
+</div>
+<!-- Action CTA Execution Bar -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
+<div class="flex items-center space-x-3 w-full sm:w-auto">
+<button class="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-colors" type="button">
+              ← Previous Step
+            </button>
+<button class="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-outline hover:text-on-surface font-label-md text-label-md font-medium transition-colors" type="button">
+              Save Draft &amp; Configure Later
+            </button>
+</div>
+<button class="w-full sm:w-auto px-6 py-3 rounded-lg bg-primary-container text-on-primary font-headline-sm text-headline-sm font-semibold hover:bg-primary transition-all flex items-center justify-center space-x-2 shadow-lg shadow-primary-container/20" type="button">
+<span>Deploy to Paper Trading &amp; Enter Dashboard</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-outline text-center sm:text-right pt-1">
+          Zero financial risk. Live broker capital remains locked until 30-day paper validation criteria are met.
+        </p>
+</div>
+</section>
+</div>
+</div></main></body></html>
