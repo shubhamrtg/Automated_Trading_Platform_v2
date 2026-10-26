@@ -1,0 +1,20 @@
+{
+  "project_name": "Automated Trading Platform",
+  "project_code": "ATP",
+  "mode": "standard",
+  "granularity": "milestone",
+  "parallelization": false,
+  "commit_docs": true,
+  "model_profile": "default",
+  "workflow": {
+    "research": false,
+    "plan_check": true,
+    "verifier": true
+  },
+  "rules": {
+    "live_mode_disabled": true,
+    "mandatory_risk_manager": true,
+    "ai_service_isolated": true,
+    "no_withdrawals": true
+  }
+}
