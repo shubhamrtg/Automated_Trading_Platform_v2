@@ -1,22 +1,22 @@
 # Project State: Automated Trading Platform (Phase 1)
 
-**Current Milestone:** Phase 1 (Foundations)  
-**Overall Status:** Project initialized. Ready to begin Phase 1 execution.  
-**Phase Progress:** 0 / 12 milestones completed  
+**Current Milestone:** Phase 2 (Data Layer and Instrument Specs)  
+**Overall Status:** Phase 1 (Foundations) completed and verified. Ready for Phase 2.  
+**Phase Progress:** 1 / 12 milestones completed  
 
 ---
 
 ## Active Phase Summary
 
-### Phase 1: Foundations
-- **Status:** Pending start
-- **Goal:** Set up repository layout, configuration system, domain models, logging, base interfaces, database migrations (SQLite WAL), and the tamper-resistant append-only audit log.
-- **Next Step:** `/gsd-plan-phase 1` or execute Milestone 1 implementation.
+### Phase 2: Data Layer and Instrument Specs
+- **Status:** Next up
+- **Goal:** Ingest, validate, and store market data; implement instrument specifications for spot forex and exchange-traded contracts.
+- **Next Step:** Plan and execute Phase 2.
 
 ---
 
 ## Phase Execution Checklist
-- [ ] Phase 1: Foundations
+- [x] Phase 1: Foundations (Completed: models, config, audit triggers, interfaces, tests)
 - [ ] Phase 2: Data layer and instrument specs
 - [ ] Phase 3: Strategy plugins and the reference strategy
 - [ ] Phase 4: Risk manager and kill switch

@@ -3,11 +3,11 @@
 ## v1 Requirements (Phase 1 Scope)
 
 ### Core Engine & Architecture
-- [ ] **FR-INS-5**: All timestamps stored and processed in UTC; broker server-time offsets explicitly handled and tested.
-- [ ] **FR-SEC-1**: Broker credentials exist only on server in secrets manager/env vars with trade-only permissions; never exposed to clients or AI.
-- [ ] **FR-SEC-3**: Trading engine never exposed to public internet; communicates only with local API gateway via localhost.
-- [ ] **FR-SEC-4**: Append-only, tamper-resistant audit log for signals, risk decisions, orders, fills, commands, config changes, and AI interactions.
-- [ ] **FR-EXE-4**: Trading engine runs correctly with zero clients connected and AI service switched off.
+- [x] **FR-INS-5**: All timestamps stored and processed in UTC; broker server-time offsets explicitly handled and tested.
+- [x] **FR-SEC-1**: Broker credentials exist only on server in secrets manager/env vars with trade-only permissions; never exposed to clients or AI.
+- [x] **FR-SEC-3**: Trading engine never exposed to public internet; communicates only with local API gateway via localhost.
+- [x] **FR-SEC-4**: Append-only, tamper-resistant audit log for signals, risk decisions, orders, fills, commands, config changes, and AI interactions.
+- [x] **FR-EXE-4**: Trading engine runs correctly with zero clients connected and AI service switched off.
 
 ### Instrument & Market Data Layer
 - [ ] **FR-INS-1**: Instruments defined by specs loaded from broker/config and cached, with manual override support.
@@ -63,7 +63,7 @@
 - [ ] **FR-CLI-6**: Idempotent, server-authoritative command processing.
 - [ ] **FR-SEC-2**: Secure authentication: Argon2 password hashing, TOTP 2FA, rotating JWT refresh tokens, device registry.
 - [ ] **FR-SEC-5**: Step-up confirmation for consequential actions (e.g. strategy activation, risk setting updates).
-- [ ] **D8-AUTH**: Role-based access control enforcing Viewer, Operator, Admin, and low-privilege AI role permissions. No withdrawal route for any role.
+- [x] **D8-AUTH**: Role-based access control enforcing Viewer, Operator, Admin, and low-privilege AI role permissions. No withdrawal route for any role.
 
 ### Web Workstation & Notifications
 - [ ] **FR-CLI-3**: Desktop web workstation implementing 11 screens per `docs/DESIGN.md`: Dashboard, Profiles, Profile Detail, Strategies, Backtests, Forward Tests, Trades & Journal, AI Assistant, Risk & Settings, Help, Welcome Wizard.
